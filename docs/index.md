@@ -65,8 +65,9 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 <br/>
 <br/>
 <br/>
-<br/>
-<br/>
+## Entraînement du classifieur cascade
+
+Le classifieur cascade permet 
 
 
 
@@ -81,31 +82,23 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 
 
 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ### Source 
 
