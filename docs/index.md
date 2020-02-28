@@ -28,7 +28,7 @@ Chaque nuances de couleurs sont codées sur 8 bits donc elles peuvent prendre 25
 <br/>
 <br/>
 
- 
+
 ### Principe
 
 Le principe est d'étiqueter les pixels d'une image en seuillant le voisinage de chaque pixel et considèrer le résultat comme un nombre binaire sur 8 bits.
@@ -93,41 +93,120 @@ Le script est écrit de la manière suivante:
 
 * Images positives
 
-Les images positives sont des images qui contiennent le visage à reconnaître. Il en faut aussi un très grand nombre mais il faut aussi connaître les coordonnées de la postition du visage dans l'image ainsi que le nombre d'occurence du visage. On ne peut pas réaliser cela à la main puisque cela serait trop long. Par chance, OpenCV propose un outil, opencv_createsample, permettant de créer des images positives à partir d’une seule image d’entrée. Nous avons donc besoin d’une image contenant uniquement notre visage à reconnaître et de créer un nouveau dossier "positives" qui contiendra les images positives. Afin d'utiliser opencv_createsample on écrit la commande suivante dans le terminal "opencv_createsamples -img stop.png -bg negatives.txt -info positives/positives.lst -pngoutput -num 600". Cette commande nous permet de générer 600 images positives à partir des images négatives et un fichier "positives.lst" qui contiennent les informations relatives aux images positives.
+Les images positives sont des images qui contiennent le visage à reconnaître. Il en faut aussi un très grand nombre mais il faut aussi connaître les coordonnées de la postition du visage dans l'image ainsi que le nombre d'occurence du visage.
+<br/>
+<br/>
+On ne peut pas réaliser cela à la main puisque cela serait trop long. Par chance, OpenCV propose un outil, opencv_createsample, permettant de créer des images positives à partir d’une seule image d’entrée.
+<br/>
+<br/>
+Nous avons donc besoin d’une image contenant uniquement notre visage à reconnaître et de créer un nouveau dossier "positives" qui contiendra les images positives. Afin d'utiliser opencv_createsample, on écrit la commande de la manière suivante dans le terminal : "opencv_createsamples -img stop.png -bg negatives.txt -info positives/positives.lst -pngoutput -num 600". 
+<br/>
+<br/>
+Cette commande nous permet de générer 600 images positives à partir des images négatives et un fichier "positives.lst" qui contient les informations relatives aux images positives.
+Le fichier ressemble à ceci :
+<br/>
+
+<img src="Capture-d’écran-2019-03-11-à-19.30.36.png" width=500 align=left> 
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+Le resultat obtenu ressemble à ceci :
+<br/>
+<br/>
+<img src="0050_0215_0113_0176_0176.jpg" width=500 align=left>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+* Fichier descripteur
+
+Maintenant que nous avons nos images positives, nous devons créer un fichier binaire rassemblant toutes les images positives, afin de les utiliser pour l’apprentissage. Pour ce faire, nous allons une fois de plus utiliser open_cv_create_sample qui nous permet facilement de générer ce fichier. 
+<br/>
+<br/>
+On écrit la commande de la manière suivante dans le terminal : "opencv_createsamples -info positives/positives.lst  -num 600 -w 24 -h 24 -vec positives.vec"
+<br/>
+<br/>
+Les arguments pris en compte sont la liste des images positives (-info), la destination de notre fichier de sortie (-vec), le nombre d’échantillons à prendre en compte (-num) et la taille en pixel des échantillons (-w et -h).
+
+*  Apprentissage du classificateur
+
+Tout est prêt, nous pouvons passer à l’apprentissage du classificateur.
+
+Nous commençons par créer un dossier data qui contiendra notre classificateur. Puis nous appelons l’outil "opencv_traincascade", qui permet d’entraîner une cascade.
+<br/>
+<br/>
+Cet outil prend en argument le dossier qui contiendra le classificateur entraîné (-data), notre fichier descripteur postives.vec (-vec), la liste des images négatives (-bg).
+<br/>
+<br/>
+Nous indiquons également le nombre d’images positives (-numPos) et le nombre d’images négatives (-numNeg) qui seront utilisés à chaque itération. Le nombre d’images à utiliser doit être inférieur au nombre d’images disponible. Enfin, nous indiquons le nombre de itérations à entraîner (-numStages) ainsi que la taille, en pixel des échantillons (-w -h).
+<br/>
+<br/>
+On écrit alors la commande de la manière suivante dans le terminal : "opencv_traincascade -data data -vec positives.vec -bg negatives.txt -numPos 550 -numNeg 600-numStages 20 -w 24 -h 24"
+<br/>
+<br/>
+Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et dépend fortement du nombre d’itérations que vous avez spécifié. Pour chaque itération, un fichier stageXX.xml est créé. Cela permet de pouvoir arrêter l’apprentissage et reprendre de le reprendre à la dernière itération connue. Lorsque l’entraînement se termine un fichier cascade.xml est créé et on obtient cet affichage dans le terminal : 
+<br/>
+<br/>
+<img src="Entrainer_classificateur.png" width=400 align=left>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 
 
 
 
 
 
+* Test du classificateur
+
+Maintenant que l'on possède notre classificateur, il nous reste plus qu'à le tester avec le script suivant : 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
 <br/>
 <br/>
 <br/>
