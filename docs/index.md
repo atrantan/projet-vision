@@ -1,5 +1,7 @@
 # Projet de S4-TI - détection de visages
 
+Dans le cadre de notre projet d'étude, nous allons réaliser un module de reconnaissance de visage pour systèmes embarqués.
+
 ## Algorithme LBP
 
 Le modèle binaire local (LBP en anglais) sont des caractéristiques utilisées en vision par ordinateur pour reconnaître des textures.
@@ -37,7 +39,7 @@ Ce traitement est possible si on prend pas en compte les pixels des bords de l'i
 On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel choisi :
 * On compare chaque pixels avoisinnants avec le pixel choisi.
 <br/>
-<img src="Capture1.png" width=100 align=left>
+<img src="Capture1.PNG" width=100 align=left>
 <br/>
 <br/>
 <br/>
@@ -45,7 +47,7 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 <br/>
 * Si le pixel au voisinage est plus grand ou égal que le pixel choisi alors le pixel avoisinnant prend la valeur binaire "1" sinon il vaut "0".
 <br/>
-<img src="Capture2.png" width=100 align=left>
+<img src="Capture2.PNG" width=100 align=left>
 <br/>
 <br/>
 <br/>
@@ -53,7 +55,7 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 <br/>
 * Le premier pixel comparé correspond au LSB (bit 0) et le dernier au MSB (bit 7).
 <br/>
-<img src="Capture3.png" width=100 align=left>
+<img src="Capture3.PNG" width=100 align=left>
 <br/>
 <br/>
 <br/>
@@ -61,8 +63,9 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 <br/>
 * Le pixel choisi se voit attribué la valeur décimal des bits avoisinnants.
 <br/>
-<img src="Capture4.png" width=300 align=left>
+<img src="Capture4.PNG" width=300 align=left>
 <br/>
+
 ## Entraînement du classifieur cascade
 
 Le classifieur cascade permet théoriquement de reconnaître des visages en entraînant ce classifieur de la manière suivante.
@@ -196,6 +199,7 @@ Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et
 * Test du classificateur
 
 Maintenant que l'on possède notre classificateur, il nous reste plus qu'à le tester avec le script suivant : 
+<br/>
 <img src="éxecution_classifier.png" width=800 align=left/>
 <br/>
 On utilise comme visage à détecter ce de Barack Obama avec l'image suivante :
@@ -209,20 +213,8 @@ Comme on peut le voir le classifier a réussi à détecter le visage mais il y a
 On en déduit les limites du classifier : tout d'abord la détection d'un visage est très peu précise et ensuite il n'arrive pas à détecter un visage en particulier.
 
 <br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+
+## Nouvelle solution : reconizer
+
+
+
