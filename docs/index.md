@@ -226,7 +226,3 @@ On en déduit les limites du classifier : tout d'abord la détection d'un visage
 <br/>
 <br/>
 <br/>
-
-### Source 
-
-* https://fr.wikipedia.org/wiki/Motif_binaire_local
