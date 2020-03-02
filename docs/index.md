@@ -196,7 +196,17 @@ Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et
 * Test du classificateur
 
 Maintenant que l'on possède notre classificateur, il nous reste plus qu'à le tester avec le script suivant : 
-
+<img src="éxecution_classifier.png" width=800 align=left/>
+<br/>
+On utilise comme visage à détecter ce de Barack Obama avec l'image suivante :
+<img src="image.jpg" width=400 align=left/>
+<br/>
+On obtient le résultat suivant :
+<br/>
+<img src="visage_image.jpg" width=400 align=left/>
+<br/>
+Comme on peut le voir le classifier a réussi à détecter le visage mais il y a eu 4 autres détections parisites.
+On en déduit les limites du classifier : tout d'abord la détection d'un visage est très peu précise et ensuite il n'arrive pas à détecter un visage en particulier.
 
 <br/>
 <br/>
