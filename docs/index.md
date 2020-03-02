@@ -77,7 +77,7 @@ Ce script a besoin pour fonctionner des modules "OpenCV" pour le traitement des 
 Le script est écrit de la manière suivante: 
 <br/>
 
- <img src="scipt_images_négatives.png" width=900 align=left> 
+ <img src="scipt_images_négatives.PNG" width=900 align=left> 
 <br/>
 <br/>
 <br/>
@@ -196,7 +196,7 @@ Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et
 
 
 
-* Test du classificateur
+* Test du classificateur avec une seule image du visage à détecter
 
 Maintenant que l'on possède notre classificateur, il nous reste plus qu'à le tester avec le script suivant : 
 <br/>
@@ -213,6 +213,22 @@ Comme on peut le voir le classifier a réussi à détecter le visage mais il y a
 On en déduit les limites du classifier : tout d'abord la détection d'un visage est très peu précise et ensuite il n'arrive pas à détecter un visage en particulier.
 
 <br/>
+
+* Test du classificateur avec plusieurs images du visage à détecter
+
+Afin de pouvoir entraîner un nouveau classificateur, nous avons besoin d’un grand nombre d’images positives et d’un nombre encore plus élevé d'images négatives.
+<br/>
+Dans notre cas, on a 10 photos du visages à reconnaître et 200 images négatives qui ont été créés précèdemment.
+<br/>
+Maintenant qu'on a ces images 
+find ./negatives/ -name '*.jpg' > negatives.txt 
+find ./positives/ -name '*.jpg' > positives.txt 
+<br/>
+
+
+
+
+
 
 ## Nouvelle solution : reconizer
 
