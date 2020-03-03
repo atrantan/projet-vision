@@ -66,7 +66,7 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 <img src="Capture4.PNG" width=300 align=left>
 <br/>
 
-## Entraînement du classifieur cascade
+## Entraînement du classifieur cascade avec une seule image du visage à détecter
 
 Le classifieur cascade permet théoriquement de reconnaître des visages en entraînant ce classifieur de la manière suivante.
 
@@ -196,7 +196,7 @@ Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et
 
 
 
-* Test du classificateur avec une seule image du visage à détecter
+* Test du classificateur 
 
 Maintenant que l'on possède notre classificateur, il nous reste plus qu'à le tester avec le script suivant : 
 <br/>
@@ -214,18 +214,53 @@ On en déduit les limites du classifier : tout d'abord la détection d'un visage
 
 <br/>
 
-* Test du classificateur avec plusieurs images du visage à détecter
+## Entraînement du classifieur cascade avec plusieurs images du visage à détecter
+
+* Rassembler les images 
 
 Afin de pouvoir entraîner un nouveau classificateur, nous avons besoin d’un grand nombre d’images positives et d’un nombre encore plus élevé d'images négatives.
 <br/>
-Dans notre cas, on a 10 photos du visages à reconnaître et 200 images négatives qui ont été créés précèdemment.
 <br/>
-Maintenant qu'on a ces images 
-find ./negatives/ -name '*.jpg' > negatives.txt 
-find ./positives/ -name '*.jpg' > positives.txt 
+Dans notre cas, on a 10 photos du visage à reconnaître et 200 images négatives qui ont été générées précèdemment.
+<br/>
+<br/>
+Maintenant qu'on a ces images, il faut créer un fichier contenant la liste des images négatives avec la commande suivante : "find ./negatives/ -name '*.jpg' > negatives.txt"
+<br/>
+<br/>
+<img src="images_obama.jpg" width=500 align=left/>
+<br/>
+Puis il faut aussi créer un fichier contenant la liste des images du visage à reconnaître avec la commande suivante : "find ./positives/ -name '*.jpg' > positives.txt" 
+<br/>
 <br/>
 
+* Générer les images positives
 
+Pour ce faire, nous pouvons appeler la fonction opencv_createsamples pour chaque image positive. Cela nous permet de générer de nouvelles images puis de générer les fichiers descripteurs. Cependant appeler cette fonction à la main sera très long.
+
+Pour faciliter cette opération, nous pouvons appeler un nouveau script : "createsamples.pl". Ce script est disponible sur GitHub (https://github.com/mrnugget/opencv-haar-classifier-training). Cet outil permet, pour chaque image du visage à reconnaître, de générer automatiquement les images positives en appelant plusieurs fois l’outil opencv_createsamples. De plus les fichiers descripteurs sont également générés lors de l’appel de cette fonction.
+<br/>
+<br/>
+On utilise la fonction de la manière suivante : perl createsamples.pl positives.txt negatives.txt samples 1000 "opencv_createsamples -maxxangle 1.1 -maxyangle 1.1 maxzangle 0 -maxidev 20 -w 20 -h 20"
+<br/>
+<br/>
+Nous devons donc fournir lors de l’appel de l’outil un certain nombre d’informations. Tout d’abord, nous spécifions les listes des images positives et négatives. Puis, nous indiquons le chemin vers le dossier où seront stockés les fichiers descripteurs (samples). Enfin nous fxons le nombre d’images positives que nous voulons générer. Dans cet exemple, j’ai décidé de générer 1000 images, soit 100 nouvelles images par image initiale.
+
+* Rassembler les fichiers descripteurs
+
+L’appel du script createsamples.pl, nous permet de générer facilement les fichiers descripteurs pour chaque image positive initiale. L’ensemble de ces fichiers descripteurs ont été stockés dans le dossier samples.
+<br/>
+<br/>
+<img src="samples.jpg" width=500 align=left/>
+<br/>
+Nous devons maintenant ces fichiers dans un seul fichier descripteur afin de pouvoir entrainer le classificateur. Pour ce faire, nous allons appeler le programme mergevec.py qui permet de regrouper tous les fichiers descripteurs. Ce programme est disponible sur GitHub (https://github.com/wulfebw/mergevec).
+<br/>
+<br/>
+On éxécute le programme en tapant la commance suivante : "python3 mergevec.py -v samples -o out.vec"
+<br/>
+<br/>
+Ce programme prend en option le dossier contenant les descripteurs (-v), et le fichier à générer (-o).
+
+* Entrainer le classificateur
 
 
 
