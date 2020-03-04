@@ -61,7 +61,7 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 <br/>
 <br/>
 <br/>
-* Le pixel choisi se voit attribué la valeur décimal des bits avoisinnants.
+* Le pixel choisi se voit attribué la valeur décimale des bits avoisinnants.
 <br/>
 <img src="Capture4.PNG" width=300 align=left>
 <br/>
@@ -170,6 +170,10 @@ Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et
 <br/>
 <img src="Entrainer_classificateur.png" width=500 align=left>
 
+<br/>
+<br/>
+<br/>
+<br/>
 <br/>
 <br/>
 <br/>
