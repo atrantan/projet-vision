@@ -77,13 +77,7 @@ Ce script a besoin pour fonctionner des modules "OpenCV" pour le traitement des 
 Le script est écrit de la manière suivante: 
 <br/>
 
- <img src="scipt_images_négatives.PNG" width=900 align=left> 
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
+ <img src="scipt_images_négatives.PNG" width=1100 align=left> 
 <br/>
 <br/>
 <br/>
@@ -160,6 +154,7 @@ Tout est prêt, nous pouvons passer à l’apprentissage du classificateur.
 
 Nous commençons par créer un dossier data qui contiendra notre classificateur. Puis nous appelons l’outil "opencv_traincascade", qui permet d’entraîner une cascade.
 <br/>
+<img src="dossier_data.jpg" width=500 align=left/>
 <br/>
 Cet outil prend en argument le dossier qui contiendra le classificateur entraîné (-data), notre fichier descripteur postives.vec (-vec), la liste des images négatives (-bg).
 <br/>
@@ -173,7 +168,7 @@ On écrit alors la commande de la manière suivante dans le terminal : "opencv_t
 Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et dépend fortement du nombre d’itérations que vous avez spécifié. Pour chaque itération, un fichier stageXX.xml est créé. Cela permet de pouvoir arrêter l’apprentissage et reprendre de le reprendre à la dernière itération connue. Lorsque l’entraînement se termine un fichier cascade.xml est créé et on obtient cet affichage dans le terminal : 
 <br/>
 <br/>
-<img src="Entrainer_classificateur.png" width=400 align=left>
+<img src="Entrainer_classificateur.png" width=500 align=left>
 
 <br/>
 <br/>
@@ -190,10 +185,6 @@ Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et
 <br/>
 <br/>
 <br/>
-
-
-
-
 
 
 * Test du classificateur 
@@ -210,7 +201,7 @@ On obtient le résultat suivant :
 <img src="visage_image.jpg" width=400 align=left/>
 <br/>
 Comme on peut le voir le classifier a réussi à détecter le visage mais il y a eu 4 autres détections parisites.
-On en déduit les limites du classifier : tout d'abord la détection d'un visage est très peu précise et ensuite il n'arrive pas à détecter un visage en particulier.
+
 
 <br/>
 
@@ -262,9 +253,37 @@ Ce programme prend en option le dossier contenant les descripteurs (-v), et le f
 
 * Entrainer le classificateur
 
+Maintenant que nous avons notre fichier descripteur, nous devons entraîner le classificateur.
+<br/>
+Mais avant cela, créons un dossier qui contiendra notre classificateur et les différents fichiers générés à chaque étape de l’entraînement. Il s'agit du dossier "data" 
+<br/>
+<img src="dossier_data.jpg" width=500 align=left/>
 
+Maintenant, comme avec l'entraînement du classifieur cascade avec une image du visage à détecter nous allons utliser l'éxécutable opencv_traincascade de la manière suivante afin d'entrainer le classifier : 
+<br/>
+<br/>
+"opencv_traincascade -data data -vec out.vec -bg negatives.txt -numPos 780 -numNeg 200 -numStages 20 -w 20 -h 20"
+<br/>
+<br/>
+Ce commande prend du temps à s'éxécuter comme avec l'entraînement du classifieur cascade avec une image du visage à détecter.
+<br/>
+<br/>
+Cet outil prend en argument le dossier qui contiendra le classificateur entraîné (-data), notre fichier descripteur postives.vec (-vec), la liste des images négatives (-bg).
 
+Nous indiquons également le nombre d’images positives (-numPos) et le nombre d’images négatives (-numNeg) qui seront utilisés à chaque itération. Le nombre d’images à utiliser doit être inférieur au nombre d’images disponible. Enfin, nous indiquons le nombre de itérations à entraîner (-numStages) ainsi que la taille, en pixel des échantillons (-w -h).
 
+* Test du classificateur
+
+Une fois l'entrînement fini, il suffit d'utiliser le même script qui a permis l'entrainement du classifieur cascade avec une image du visage à détecter mais il faut seulement changer le fichier xml. 
+<br/>
+Voici le résulat avec une photo de Barack Obama
+<br/>
+<br/>
+<img src="visage_obamaface.png" width=200 align=left/>
+<br/>
+
+Comme on peut le voir le classifier n'a pas réussi à détecter efficacement le visage mais il y a eu 3 autres détections parisites.
+On en déduit les limites du classifier : tout d'abord la détection d'un visage est très peu précise et ensuite il n'arrive pas à détecter un visage en particulier.
 ## Nouvelle solution : reconizer
 
 
