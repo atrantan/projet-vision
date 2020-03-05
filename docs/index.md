@@ -66,6 +66,20 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 <img src="Capture4.PNG" width=300 align=left>
 <br/>
 
+### Mise en pratique
+
+Nous allons maintenant transformer une image avec l'algorithme LBP. Pour ce faire nous allons utiliser une photo de Barack Obama disponible ci-dessous et un script python disponible sur GitHub.
+     
+<img src="Poster-sized_portrait_of_Barack_Obama.jpg" width=300 align=left/>
+<br/>
+
+
+
+Après traitement, on obtient le résultat suivant : 
+
+<img src="obama_countours.jpg" width=300 align=left/>
+
+
 ## Entraînement du classifieur cascade avec une seule image du visage à détecter
 
 Le classifieur cascade permet théoriquement de reconnaître des visages en entraînant ce classifieur de la manière suivante.
@@ -288,7 +302,7 @@ Voici le résulat avec une photo de Barack Obama
 
 Comme on peut le voir le classifier n'a pas réussi à détecter efficacement le visage mais il y a eu 3 autres détections parisites.
 On en déduit les limites du classifier : tout d'abord la détection d'un visage est très peu précise et ensuite il n'arrive pas à détecter un visage en particulier.
-## Nouvelle solution : reconizer
+## Nouvelle solution : Reconizer
 
 
 
