@@ -68,7 +68,7 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 
 ### Mise en pratique
 
-Nous allons maintenant transformer une image avec l'algorithme LBP. Pour ce faire nous allons utiliser une photo de Barack Obama disponible ci-dessous et un script python disponible sur GitHub.
+Nous allons maintenant transformer une image avec l'algorithme LBP. Pour ce faire nous allons utiliser une photo de Barack Obama disponible ci-dessous et un script python disponible sur GitHub (https://github.com/brosierge1/projet-vision/blob/algorithme-LBP/python/script.py).
      
 <img src="Poster-sized_portrait_of_Barack_Obama.jpg" width=300 align=left/>
 <br/>
@@ -78,6 +78,9 @@ Nous allons maintenant transformer une image avec l'algorithme LBP. Pour ce fair
 Après traitement, on obtient le résultat suivant : 
 
 <img src="obama_countours.jpg" width=300 align=left/>
+<br/>
+
+Comme nous pouvons le voir le visage de Barack Obama est composé d'une nuance de gris particulière ce qui permet de reconnaître son visage.
 
 
 ## Entraînement du classifieur cascade avec une seule image du visage à détecter
