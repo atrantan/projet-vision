@@ -4,6 +4,10 @@ Dans le cadre de notre projet de fin d'étude, nous allons réaliser un module d
 
 ## OpenCV
 
+OpenCV qui signifie Open Computer Vision est une bibliothèque open source initialement développée par Intel et qui est spécialisée dans le traitement de l’image. Elle permet de coder des programmes en langage C++, Python ou Java. Dans le cadre de notre projet, nous allons utiliser OpenCV en langage C++ et Python.
+La bibliothèque OpenCV met à disposition de nombreuses fonctionnalités très diversifiées permettant de créer des programmes. Elle propose la plupart des opérations classiques en traitement bas niveau des images comme lecture, écriture et affichage d’une image ou bien le filtrage, lissage ou seuillage d’image et bien d’autres…
+<br/>
+<br/>
 Nous allons utiliser OpenCV 3.4 et 4 voici comment l'installer.
 
 ### Installer Opencv et ses exemples avec CMake,
@@ -378,5 +382,26 @@ On a donc trouvé une nouvelle solution : le recognizer.
 
 ## Nouvelle solution : Recognizer
 
+Le recognizer est une méthode qui permet, à l'aide d'un classifieur cascade, de détecter un visage mais aussi de le reconnaître à partir d'une base de données. Nous allons utiliser la dernière version d'OpenCV (OpenCV 4) qui contient l'outil "example_face_facerec_video" qui permet de faire fonctionner le recognizer.
+<br/>
+<br/>
+Cet outil a besoin de trois élements pour fonctionner : une entrée vidéo, un classifieur cascade entraîné et un fichier CSV.
+<br/>
+<br/>
+Pour ce qui est de l'entrée vidéo nous allons utliser une webcam et pour le classifieur entraîné nous allons utiliser le classifieur cascade fourni par OpenCV.
 
+### Création du fichier CSV
 
+Un fichier CSV est un fichier qui contient les chemins des images des visages à reconnaître.
+<br/>
+Tout d'abord, il nous faut des photos des visages à reconnaître.
+<img src="photos_csv.JPG" width=500 align=left/>
+<br/>
+Mais ces images n'ont pas toutes les mêmes dimensions ce qui pose problème au recognizer. Il faut donc les redimmensionner en les recentrant par rapport à la position des yeux. Pour ce faire, nous allons utiliser un script en Python disponible sur GitHub (https://github.com/vbouvardge1/projet-vision/tree/facerecognizer). 
+<br/>
+<br/>
+Après redimmensionnement des images, on obtient ceci :
+<img src="visages_centrés.JPG" width=500 align=left/>
+<br/>
+Maintenant nous pouvons créer notre fichier CSV. Il doit réspecter une syntaxe particulière : il est composé du chemin de l'image suivi d'un point virgule puis d'un indice qui caractérise ce visage. On répète cette syntaxe pour toutes les images.
+<img src="visages_centrés.JPG" width=500 align=left/>
