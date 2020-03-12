@@ -1,6 +1,6 @@
 # Projet de S4-TI - détection de visages
 
-Dans le cadre de notre projet d'étude, nous allons réaliser un module de reconnaissance de visage pour systèmes embarqués.
+Dans le cadre de notre projet de fin d'étude, nous allons réaliser un module de reconnaissance de visage pour systèmes embarqués.
 
 ## Algorithme LBP
 
@@ -228,7 +228,7 @@ Comme on peut le voir le classifier a réussi à détecter le visage mais il y a
 
 ## Entraînement du classifieur cascade avec plusieurs images du visage à détecter
 
-* Rassembler les images 
+* Rassembler les visages 
 
 Afin de pouvoir entraîner un nouveau classificateur, nous avons besoin d’un grand nombre d’images positives et d’un nombre encore plus élevé d'images négatives.
 <br/>
@@ -305,6 +305,8 @@ Voici le résulat avec une photo de Barack Obama
 
 Comme on peut le voir le classifier n'a pas réussi à détecter efficacement le visage mais il y a eu 3 autres détections parisites.
 On en déduit les limites du classifier : tout d'abord la détection d'un visage est très peu précise et ensuite il n'arrive pas à détecter un visage en particulier.
+
+
 ## Nouvelle solution : Reconizer
 
 
