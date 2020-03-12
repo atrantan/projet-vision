@@ -369,14 +369,14 @@ Une fois l'entrînement fini, il suffit d'utiliser le même script qui a permis 
 Voici le résulat avec une photo de Barack Obama
 <br/>
 <br/>
-<img src="visage_obamaface.png" width=200 align=left/>
+<img src="classifieur.JPG" width=500 align=left/>
 <br/>
 
-Comme on peut le voir le classifier n'a pas réussi à détecter efficacement le visage mais il y a eu 3 autres détections parisites.
-On en déduit les limites du classifier : tout d'abord la détection d'un visage est très peu précise et ensuite il n'arrive pas à détecter un visage en particulier.
+Comme on peut le voir le classifier a réussi à détecter des visages. Néanmoins, il n'arrive pas à détecter le visage de Barack Obama en particulier.
+On en déduit la limite du classifier : il n'arrive pas à détecter un visage en particulier.
+On a donc trouvé une nouvelle solution : le recognizer.
 
-
-## Nouvelle solution : Reconizer
+## Nouvelle solution : Recognizer
 
 
 
