@@ -285,7 +285,7 @@ Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et
 
 Maintenant que l'on possède notre classificateur, il nous reste plus qu'à le tester avec le script suivant : 
 <br/>
-<img src="éxecution_classifier.png" width=800 align=left/>
+<img src="éxecution_classifier.PNG" width=800 align=left/>
 <br/>
 On utilise comme visage à détecter ce de Barack Obama avec l'image suivante :
 <img src="image.jpg" width=400 align=left/>
@@ -312,7 +312,7 @@ Dans notre cas, on a 10 photos du visage à reconnaître et 200 images négative
 Maintenant qu'on a ces images, il faut créer un fichier contenant la liste des images négatives avec la commande suivante : "find ./negatives/ -name '*.jpg' > negatives.txt"
 <br/>
 <br/>
-<img src="images_obama.jpg" width=500 align=left/>
+<img src="images_obama.JPG" width=500 align=left/>
 <br/>
 Puis il faut aussi créer un fichier contenant la liste des images du visage à reconnaître avec la commande suivante : "find ./positives/ -name '*.jpg' > positives.txt" 
 <br/>
@@ -335,7 +335,7 @@ Nous devons donc fournir lors de l’appel de l’outil un certain nombre d’in
 L’appel du script createsamples.pl, nous permet de générer facilement les fichiers descripteurs pour chaque image positive initiale. L’ensemble de ces fichiers descripteurs ont été stockés dans le dossier samples.
 <br/>
 <br/>
-<img src="samples.jpg" width=500 align=left/>
+<img src="samples.JPG" width=500 align=left/>
 <br/>
 Nous devons maintenant ces fichiers dans un seul fichier descripteur afin de pouvoir entrainer le classificateur. Pour ce faire, nous allons appeler le programme mergevec.py qui permet de regrouper tous les fichiers descripteurs. Ce programme est disponible sur GitHub (https://github.com/wulfebw/mergevec).
 <br/>
@@ -351,7 +351,7 @@ Maintenant que nous avons notre fichier descripteur, nous devons entraîner le c
 <br/>
 Mais avant cela, créons un dossier qui contiendra notre classificateur et les différents fichiers générés à chaque étape de l’entraînement. Il s'agit du dossier "data" 
 <br/>
-<img src="dossier_data.jpg" width=500 align=left/>
+<img src="dossier_data.JPG" width=500 align=left/>
 
 Maintenant, comme avec l'entraînement du classifieur cascade avec une image du visage à détecter nous allons utliser l'éxécutable opencv_traincascade de la manière suivante afin d'entrainer le classifier : 
 <br/>
@@ -404,4 +404,19 @@ Après redimmensionnement des images, on obtient ceci :
 <img src="visages_centrés.JPG" width=500 align=left/>
 <br/>
 Maintenant nous pouvons créer notre fichier CSV. Il doit réspecter une syntaxe particulière : il est composé du chemin de l'image suivi d'un point virgule puis d'un indice qui caractérise ce visage. On répète cette syntaxe pour toutes les images.
-<img src="visages_centrés.JPG" width=500 align=left/>
+<img src="csv.JPG" width=500 align=left/>
+
+### Test du recognizer
+
+Nous avons désormais tous les éléments pour faire fonctionner le recognizer. Pour cela, nous allons utiliser l'outil "example_face_facerec_video" de la manière suivante : 
+<br/>
+<img src="commande.JPG" width=800 align=left/>
+<br/>
+Comme dit précèdemment cet exécutable prend 3 arguments. Le premier est le classifieur cascade, le deuxième est le fichier CSV et le troisième est l'indice de l'entrée vidéo (0 correspond à la webcam externe de l'ordinateur).
+<br/>
+<br/>
+Une fois l'exécutable lancé, on obtient ceci : 
+<br/>
+<img src="recognizer.JPG" width=500 align=left/>
+<br/>
+On observe que cette fois-ci on arrive à détecter des visages mais on arrive aussi à reconnaître le visage détecté. Nous avons résolu le problème du classifieur cascade. Néanmoins, chaque visage détecté doit être affilié à un visage dans la base de donnée. 
