@@ -244,7 +244,7 @@ Tout est prêt, nous pouvons passer à l’apprentissage du classificateur.
 
 Nous commençons par créer un dossier data qui contiendra notre classificateur. Puis nous appelons l’outil "opencv_traincascade", qui permet d’entraîner une cascade.
 <br/>
-<img src="dossier_data.jpg" width=500 align=left/>
+<img src="dossier_data.JPG" width=500 align=left/>
 <br/>
 Cet outil prend en argument le dossier qui contiendra le classificateur entraîné (-data), notre fichier descripteur postives.vec (-vec), la liste des images négatives (-bg).
 <br/>
