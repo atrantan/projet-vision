@@ -166,8 +166,10 @@ Les images négatives sont des images qui ne contiennent le visage avec lequel o
 Ce script a besoin pour fonctionner des modules "OpenCV" pour le traitement des images, "Numpy" pour les calculs numériques et "Urllib" pour gérer les URLs.
 Le script est écrit de la manière suivante: 
 <br/>
+'''python
 
  <img src="scipt_images_négatives.PNG" width=1100 align=left> 
+ '''
 <br/>
 <br/>
 <br/>
@@ -285,7 +287,9 @@ Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et
 
 Maintenant que l'on possède notre classificateur, il nous reste plus qu'à le tester avec le script suivant : 
 <br/>
+'''python 
 <img src="éxecution_classifier.PNG" width=800 align=left/>
+'''
 <br/>
 On utilise comme visage à détecter ce de Barack Obama avec l'image suivante :
 <img src="image.jpg" width=400 align=left/>
@@ -410,7 +414,9 @@ Maintenant nous pouvons créer notre fichier CSV. Il doit réspecter une syntaxe
 
 Nous avons désormais tous les éléments pour faire fonctionner le recognizer. Pour cela, nous allons utiliser l'outil "example_face_facerec_video" de la manière suivante : 
 <br/>
+'''bash
 <img src="commande.JPG" width=800 align=left/>
+'''
 <br/>
 Comme dit précèdemment cet exécutable prend 3 arguments. Le premier est le classifieur cascade, le deuxième est le fichier CSV et le troisième est l'indice de l'entrée vidéo (0 correspond à la webcam externe de l'ordinateur).
 <br/>
