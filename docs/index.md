@@ -5,65 +5,65 @@ Dans le cadre de notre projet de fin d'étude, nous allons réaliser un module d
 ## OpenCV
 
 OpenCV qui signifie Open Computer Vision est une bibliothèque open source initialement développée par Intel et qui est spécialisée dans le traitement de l’image. Elle permet de coder des programmes en langage C++, Python ou Java. Dans le cadre de notre projet, nous allons utiliser OpenCV en langage C++ et Python.
-La bibliothèque OpenCV met à disposition de nombreuses fonctionnalités très diversifiées permettant de créer des programmes. Elle propose la plupart des opérations classiques en traitement bas niveau des images comme lecture, écriture et affichage d’une image ou bien le filtrage, lissage ou seuillage d’image et bien d’autres…
+La bibliothèque OpenCV met à disposition de nombreuses fonctionnalités très diverses permettant de créer des programmes. Elle met en oeuvre la plupart des opérations classiques en traitement bas niveau des images comme la lecture, l'écriture et l'affichage d’une image ou bien le filtrage, lissage ou seuillage d’images et bien d’autres…
 <br/>
 <br/>
 Nous allons utiliser OpenCV 3.4 et 4 voici comment l'installer.
 
-### Installer Opencv et ses exemples avec CMake,
+### Installer OpenCV et ses exemples avec CMake,
 Prérequis :
  
-Télécharger Opencv : https://github.com/opencv/opencv pour choisir la version d'OpenCV changer de branche.
+Télécharger OpenCV : https://github.com/opencv/opencv ( pour choisir une version précise, sélectionner la bonne branche ).
 
-Télécharger Opencv_contrib : https://github.com/opencv/opencv_contrib qui sera utile pour OpenCV 4.
+Télécharger OpenCV contrib : https://github.com/opencv/opencv_contrib( utile lorqu'on utilisera OpenCV 4 ).
 
-Télécharger  Cmake gui :  https://cmake.org/download/ 
+Télécharger  CMake gui :  https://cmake.org/download/ 
 
 Télécharger VSCode : https://code.visualstudio.com/download 
 
-### 1) Ouvrir Cmake gui et chercher votre fichier Opencv et votre Build.
+### 1) Ouvrir CMake gui et chercher votre fichier OpenCV et votre dossier de Build.
 <img src="Capture1.JPG" width=800 align=left/>
 <br/>
 <br/>
 <br/>
 
-### 2) Configurer Opencv.
+### 2) Configurer OpenCV.
 <img src="Capture2.JPG" width=800 align=left/>
 <br/>
 <br/>
 <br/>
 
-### 3) Changer les paramètre suivant, vous pouvez vous aider de la barre de recherche.
+### 3) Pour changer les paramètres suivants, vous pouvez vous aider de la barre de recherche.
 <img src="Capture3.JPG" width=800 align=left/>
 <br/>
 <br/>
 <br/>
 
-### 4) Reconfigurer et générer Opencv paramétré.
+### 4) Reconfigurer et regénérer OpenCV avec les paramètres mis à jour.
 <img src="Capture4.JPG" width=800 align=left/>
 <br/>
 <br/>
 <br/>
 
-### 5) Maintenant nous allons aller sur VS Code afin d’installer les modules complémentaire de Opencv. Ouvrir Opencv dans VS Code et installer les extensions CMake proposées.
+### 5) Maintenant nous allons ouvrir VS Code afin d’installer les modules complémentaire de OpenCV. Ouvrir donc le dossier OpenCV dans VS Code et installer les extensions proposées dont CMake et CMake Tools.
 <img src="Capture5.JPG" width=400 align=left/>
 <br/>
 <br/>
 <br/>
 
-### 6) Appuyer sur le logo configure et choisisser le mode "...amd64_arm"
+### 6) Cliquer sur le logo configure et choisir le kit "VisualStudioCommunity_amd64"
 <img src="Capture6.JPG" width=800 align=left/>
 <br/>
 <br/>
 <br/>
 
-### 7) Apres la configuration appuyer sur le logo build.
+### 7) Apres la configuration cliquer sur le logo build.
 <img src="Capture7.JPG" width=800 align=left/>
 <br/>
 <br/>
 <br/>
 
-### 8) Si le terminal affiche La build s'est achevée avec le code de sortie 0  vous avez terminer! Opencv et Opencv_contrib sont opérationnels.
+### 8) Si le terminal affiche "La build s'est achevée avec le code de sortie 0" vous avez terminé! OpenCV et OpenCV contrib sont opérationnels.
 <img src="Capture8.JPG" width=800 align=left/>
 <br/>
 <br/>
