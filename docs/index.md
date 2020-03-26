@@ -166,18 +166,31 @@ Les images négatives sont des images qui ne contiennent le visage avec lequel o
 Ce script a besoin pour fonctionner des modules "OpenCV" pour le traitement des images, "Numpy" pour les calculs numériques et "Urllib" pour gérer les URLs.
 Le script est écrit de la manière suivante: 
 <br/>
-'''python
+'''python<br/>
+import urllib.request <br/>
+import cv2<br/>
+import numpy as np<br/>
 
- <img src="scipt_images_négatives.PNG" width=1100 align=left> 
+def image_from_url(url):<br/>
+    rep = urllib.request.urlopen(url).read() <br/>
+    image = np.asarray(bytearray(rep), dtype="uint8") <br/>
+    image = cv2.imdecode(image, cv2.IMREAD_COLOR)<br/>
+    return image <br/>
+
+repertoire='Images/' <br/>
+lien_img="http://www.image-net.org/api/text/imagenet.synset.geturls?wnid=n04096066" <br/>
+
+img_url=urllib.request.urlopen(lien_img).read().decode() <br/>
+i=0 <br/>
+for url in img_url.split('\n'): <br/>
+	try: <br/>
+        chemin=repertoire+'image_'+str(i)+'.jpg' <br/>
+		image=image_from_url(url)<br/>
+		cv2.imwrite(chemin,image)<br/>
+        i+=1<br/>
+    except:<br/>
+        pass<br/>
  '''
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
 <br/>
 
 * Images positives
@@ -287,8 +300,17 @@ Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et
 
 Maintenant que l'on possède notre classificateur, il nous reste plus qu'à le tester avec le script suivant : 
 <br/>
-'''python 
-<img src="éxecution_classifier.PNG" width=800 align=left/>
+'''python<br/> 
+import cv2 <br/>
+stop_cascade = cv2.CascadeClassifier('cascade.xml')<br/>
+img = cv2.imread('image.jpg')<br/>
+panneaux = stop_cascade.detectMultiScale(img, scaleFactor=1.3, minNeighbors=5)<br/>
+print(panneaux)<br/>
+for (x,y,w,h) in panneaux:<br/>
+	cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)<br/>
+cv2.imshow('img',img)<br/>
+cv2.waitKey(0)<br/>
+cv2.destroyAllWindows()<br/>
 '''
 <br/>
 On utilise comme visage à détecter ce de Barack Obama avec l'image suivante :
@@ -414,8 +436,8 @@ Maintenant nous pouvons créer notre fichier CSV. Il doit réspecter une syntaxe
 
 Nous avons désormais tous les éléments pour faire fonctionner le recognizer. Pour cela, nous allons utiliser l'outil "example_face_facerec_video" de la manière suivante : 
 <br/>
-'''bash
-<img src="commande.JPG" width=800 align=left/>
+'''bash <br/>
+example_face_facerec_video.exe C:/travail/bouvard2/opencv_master/data/haarcascade_frontalface_alt.xml C:/travail/bouvard2/FaceRecognizer/persons.csv 0 <br/>
 '''
 <br/>
 Comme dit précèdemment cet exécutable prend 3 arguments. Le premier est le classifieur cascade, le deuxième est le fichier CSV et le troisième est l'indice de l'entrée vidéo (0 correspond à la webcam externe de l'ordinateur).
