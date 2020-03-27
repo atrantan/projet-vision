@@ -1,4 +1,4 @@
-# Projet de S4-TI - détection de visages 
+
 
 Dans le cadre de notre projet de fin d'étude, nous allons réaliser un module de reconnaissance de visage pour systèmes embarqués.
 
