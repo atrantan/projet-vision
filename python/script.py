@@ -1,5 +1,4 @@
 import cv2
-import matplotlib.pyplot as plt
 
 img=cv2.imread("Poster-sized_portrait_of_Barack_Obama.jpg")
 img_LBP=cv2.imread("Poster-sized_portrait_of_Barack_Obama.jpg")
@@ -105,36 +104,6 @@ while h<hauteur-1:
 	h=h+1
 	l=0		
 
-#matplotlib.hist(histogramme_rouge, range = (0, 5), bins = 5, color = 'yellow',edgecolor = 'red')
-
-if histogramme_bleu==histogramme_rouge:
-	print("ntm")
-
-#histogramme rouge
-plt.hist(histogramme_rouge)
-
-plt.title('Histogramme rouge', fontsize=10)
-
-plt.savefig("Histogramme rouge.png")
-
-
-
-#histogramme bleu
-plt.hist(histogramme_bleu)
-
-plt.title('Histogramme bleu', fontsize=10)
-
-plt.savefig("Histogramme bleu.png")
-
-
-#histogramme vert
-plt.hist(histogramme_vert)
-
-plt.title('Histogramme vert', fontsize=10)
-
-plt.savefig("Histogramme vert.png")
-
-
-cv2.imwrite('pogbacountours.jpg', img_LBP)
+cv2.imwrite('image_post_traitement.jpg', img_LBP)
 
 
