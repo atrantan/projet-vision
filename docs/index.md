@@ -1,4 +1,4 @@
-# Projet de S4-TI - détection de visages
+# Projet de S4-TI - détection de visages 
 
 Dans le cadre de notre projet de fin d'étude, nous allons réaliser un module de reconnaissance de visage pour systèmes embarqués.
 
@@ -156,7 +156,7 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 
 ## Mise en pratique
 
-Nous allons maintenant transformer une image avec l'algorithme LBP. Pour ce faire nous allons utiliser une photo de Barack Obama disponible ci-dessous et un script python disponible sur GitHub (https://github.com/atrantan/projet-vision/blob/algorithme-LBP/python/script.py).
+Nous allons maintenant transformer une image avec l'algorithme LBP. Pour ce faire nous allons utiliser une photo de Barack Obama disponible ci-dessous et un script python disponible sur _GitHub_ (https://github.com/atrantan/projet-vision/blob/algorithme-LBP/python/script.py).
      
 <img src="Poster-sized_portrait_of_Barack_Obama.jpg" width=300 align=left/>
 <br/>
@@ -216,9 +216,11 @@ Les images positives sont des images qui contiennent le visage à reconnaître. 
 On ne peut pas réaliser cela à la main puisque cela serait trop long. Par chance, _OpenCV_ propose un outil, opencv_createsample, permettant de créer des images positives à partir d’une seule image d’entrée.
 <br/>
 <br/>
-Nous avons donc besoin d’une image contenant uniquement notre visage à reconnaître et de créer un nouveau dossier "positives" qui contiendra les images positives. Afin d'utiliser opencv_createsample, on écrit la commande de la manière suivante dans le terminal : "opencv_createsamples -img stop.png -bg negatives.txt -info positives/positives.lst -pngoutput -num 600". 
-<br/>
-<br/>
+Nous avons donc besoin d’une image contenant uniquement notre visage à reconnaître et de créer un nouveau dossier "positives" qui contiendra les images positives. Afin d'utiliser `opencv_createsamples`, on écrit la commande de la manière suivante dans le terminal : 
+```bash
+opencv_createsamples -img stop.png -bg negatives.txt -info positives/positives.lst -pngoutput -num 600
+```
+
 Cette commande nous permet de générer 600 images positives à partir des images négatives et un fichier "positives.lst" qui contient les informations relatives aux images positives.
 Le fichier ressemble à ceci :
 <br/>
@@ -260,35 +262,39 @@ Le resultat obtenu ressemble à ceci :
 
 * Fichier descripteur
 
-Maintenant que nous avons nos images positives, nous devons créer un fichier binaire rassemblant toutes les images positives, afin de les utiliser pour l’apprentissage. Pour ce faire, nous allons une fois de plus utiliser open_cv_create_sample qui nous permet facilement de générer ce fichier. 
+Maintenant que nous avons nos images positives, nous devons créer un fichier binaire rassemblant toutes les images positives, afin de les utiliser pour l’apprentissage. Pour ce faire, nous allons une fois de plus utiliser `opencv_create_samples` qui nous permet facilement de générer ce fichier. 
 <br/>
 <br/>
-On écrit la commande de la manière suivante dans le terminal : "opencv_createsamples -info positives/positives.lst  -num 600 -w 24 -h 24 -vec positives.vec"
-<br/>
-<br/>
-Les arguments pris en compte sont la liste des images positives (-info), la destination de notre fichier de sortie (-vec), le nombre d’échantillons à prendre en compte (-num) et la taille en pixel des échantillons (-w et -h).
+On écrit la commande de la manière suivante dans le terminal : 
+```bash
+opencv_createsamples -info positives/positives.lst  -num 600 -w 24 -h 24 -vec positives.vec
+```
 
-*  Apprentissage du classificateur
+Les arguments pris en compte sont la liste des images positives (`-info`), la destination de notre fichier de sortie (`-vec`), le nombre d’échantillons à prendre en compte (`-num`) et la taille en pixel des échantillons (`-w` et `-h`).
 
-Tout est prêt, nous pouvons passer à l’apprentissage du classificateur.
+*  Apprentissage du classifieur
 
-Nous commençons par créer un dossier data qui contiendra notre classificateur. Puis nous appelons l’outil "opencv_traincascade", qui permet d’entraîner une cascade.
+Tout est prêt, nous pouvons passer à l’apprentissage du classifieur.
+
+Nous commençons par créer un dossier data qui contiendra notre classifieur. Puis nous appelons l’outil `opencv_traincascade`, qui permet d’entraîner une cascade.
 <br/>
 <img src="dossier_data.JPG" width=500 align=left/>
 <br/>
-Cet outil prend en argument le dossier qui contiendra le classificateur entraîné (-data), notre fichier descripteur postives.vec (-vec), la liste des images négatives (-bg).
+Cet outil prend en argument le dossier qui contiendra le classifieur entraîné (`-data`), notre fichier descripteur postives.vec (`-vec`), la liste des images négatives (`-bg`).
 <br/>
 <br/>
-Nous indiquons également le nombre d’images positives (-numPos) et le nombre d’images négatives (-numNeg) qui seront utilisés à chaque itération. Le nombre d’images à utiliser doit être inférieur au nombre d’images disponible. Enfin, nous indiquons le nombre de itérations à entraîner (-numStages) ainsi que la taille, en pixel des échantillons (-w -h).
+Nous indiquons également le nombre d’images positives (`-numPos`) et le nombre d’images négatives (`-numNeg`) qui seront utilisés à chaque itération. Le nombre d’images à utiliser doit être inférieur au nombre d’images disponible. Enfin, nous indiquons le nombre de itérations à entraîner (`-numStages`) ainsi que la taille, en pixel des échantillons (`-w` `-h`).
 <br/>
 <br/>
-On écrit alors la commande de la manière suivante dans le terminal : "opencv_traincascade -data data -vec positives.vec -bg negatives.txt -numPos 550 -numNeg 600-numStages 20 -w 24 -h 24"
+On écrit alors la commande de la manière suivante dans le terminal : 
+```bash
+opencv_traincascade -data data -vec positives.vec -bg negatives.txt -numPos 550 -numNeg 600-numStages 20 -w 24 -h 24
+```
+
+Entraîner un classifieur prend un certain temps : 33 minutes dans mon cas et dépend fortement du nombre d’itérations que vous avez spécifié. Pour chaque itération, un fichier stageXX.xml est créé. Cela permet de pouvoir arrêter l’apprentissage et reprendre de le reprendre à la dernière itération connue. Lorsque l’entraînement se termine un fichier cascade.xml est créé et on obtient cet affichage dans le terminal : 
 <br/>
 <br/>
-Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et dépend fortement du nombre d’itérations que vous avez spécifié. Pour chaque itération, un fichier stageXX.xml est créé. Cela permet de pouvoir arrêter l’apprentissage et reprendre de le reprendre à la dernière itération connue. Lorsque l’entraînement se termine un fichier cascade.xml est créé et on obtient cet affichage dans le terminal : 
-<br/>
-<br/>
-<img src="Entrainer_classificateur.png" width=500 align=left>
+<img src="Entrainer_classifieur.png" width=500 align=left>
 
 <br/>
 <br/>
@@ -311,24 +317,23 @@ Entraîner un classificateur prend un certain temps : 33 minutes dans mon cas et
 <br/>
 
 
-* Test du classificateur 
+* Test du classifieur 
 
-Maintenant que l'on possède notre classificateur, il nous reste plus qu'à le tester avec le script suivant : 
-<br/>
-'''python<br/> 
-import cv2 <br/>
-stop_cascade = cv2.CascadeClassifier('cascade.xml')<br/>
-img = cv2.imread('image.jpg')<br/>
-panneaux = stop_cascade.detectMultiScale(img, scaleFactor=1.3, minNeighbors=5)<br/>
-print(panneaux)<br/>
-for (x,y,w,h) in panneaux:<br/>
-	cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)<br/>
-cv2.imshow('img',img)<br/>
-cv2.waitKey(0)<br/>
-cv2.destroyAllWindows()<br/>
-'''
-<br/>
-On utilise comme visage à détecter ce de Barack Obama avec l'image suivante :
+Maintenant que l'on possède notre classifieur, il nous reste plus qu'à le tester avec le script suivant : 
+```python 
+import cv2 
+stop_cascade = cv2.CascadeClassifier('cascade.xml')
+img = cv2.imread('image.jpg')
+panneaux = stop_cascade.detectMultiScale(img, scaleFactor=1.3, minNeighbors=5)
+print(panneaux)
+for (x,y,w,h) in panneaux:
+	cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
+cv2.imshow('img',img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+On utilise comme visage à détecter celui de Barack Obama avec l'image suivante :
 <img src="image.jpg" width=400 align=left/>
 <br/>
 On obtient le résultat suivant :
@@ -344,31 +349,34 @@ Comme on peut le voir le classifier a réussi à détecter le visage mais il y a
 
 * Rassembler les visages 
 
-Afin de pouvoir entraîner un nouveau classificateur, nous avons besoin d’un grand nombre d’images positives et d’un nombre encore plus élevé d'images négatives.
+Afin de pouvoir entraîner un nouveau classifieur, nous avons besoin d’un grand nombre d’images positives et d’un nombre encore plus élevé d'images négatives.
 <br/>
 <br/>
 Dans notre cas, on a 10 photos du visage à reconnaître et 200 images négatives qui ont été générées précèdemment.
 <br/>
 <br/>
-Maintenant qu'on a ces images, il faut créer un fichier contenant la liste des images négatives avec la commande suivante : "find ./negatives/ -name '*.jpg' > negatives.txt"
-<br/>
-<br/>
+Maintenant qu'on a ces images, il faut créer un fichier contenant la liste des images négatives avec la commande suivante : 
+```bash
+find ./negatives/ -name '*.jpg' > negatives.txt
+```
 <img src="images_obama.JPG" width=500 align=left/>
 <br/>
-Puis il faut aussi créer un fichier contenant la liste des images du visage à reconnaître avec la commande suivante : "find ./positives/ -name '*.jpg' > positives.txt" 
-<br/>
-<br/>
+Puis il faut aussi créer un fichier contenant la liste des images du visage à reconnaître avec la commande suivante : 
+```bash
+find ./positives/ -name '*.jpg' > positives.txt
+```
 
 * Générer les images positives
 
 Pour ce faire, nous pouvons appeler la fonction opencv_createsamples pour chaque image positive. Cela nous permet de générer de nouvelles images puis de générer les fichiers descripteurs. Cependant appeler cette fonction à la main sera très long.
 
-Pour faciliter cette opération, nous pouvons appeler un nouveau script : "createsamples.pl". Ce script est disponible sur GitHub (https://github.com/mrnugget/opencv-haar-classifier-training). Cet outil permet, pour chaque image du visage à reconnaître, de générer automatiquement les images positives en appelant plusieurs fois l’outil opencv_createsamples. De plus les fichiers descripteurs sont également générés lors de l’appel de cette fonction.
+Pour faciliter cette opération, nous pouvons appeler un nouveau script : `createsamples.pl`. Ce script est disponible sur _GitHub_ (https://github.com/mrnugget/opencv-haar-classifier-training). Cet outil permet, pour chaque image du visage à reconnaître, de générer automatiquement les images positives en appelant plusieurs fois l’outil opencv_createsamples. De plus les fichiers descripteurs sont également générés lors de l’appel de cette fonction.
 <br/>
 <br/>
-On utilise la fonction de la manière suivante : perl createsamples.pl positives.txt negatives.txt samples 1000 "opencv_createsamples -maxxangle 1.1 -maxyangle 1.1 maxzangle 0 -maxidev 20 -w 20 -h 20"
-<br/>
-<br/>
+On utilise la fonction de la manière suivante : 
+```bash
+perl createsamples.pl positives.txt negatives.txt samples 1000 "opencv_createsamples -maxxangle 1.1 -maxyangle 1.1 maxzangle 0 -maxidev 20 -w 20 -h 20"
+```
 Nous devons donc fournir lors de l’appel de l’outil un certain nombre d’informations. Tout d’abord, nous spécifions les listes des images positives et négatives. Puis, nous indiquons le chemin vers le dossier où seront stockés les fichiers descripteurs (samples). Enfin nous fxons le nombre d’images positives que nous voulons générer. Dans cet exemple, j’ai décidé de générer 1000 images, soit 100 nouvelles images par image initiale.
 
 * Rassembler les fichiers descripteurs
@@ -378,38 +386,38 @@ L’appel du script createsamples.pl, nous permet de générer facilement les fi
 <br/>
 <img src="samples.JPG" width=500 align=left/>
 <br/>
-Nous devons maintenant ces fichiers dans un seul fichier descripteur afin de pouvoir entrainer le classificateur. Pour ce faire, nous allons appeler le programme mergevec.py qui permet de regrouper tous les fichiers descripteurs. Ce programme est disponible sur GitHub (https://github.com/wulfebw/mergevec).
+Nous devons maintenant ces fichiers dans un seul fichier descripteur afin de pouvoir entrainer le classifieur. Pour ce faire, nous allons appeler le programme `mergevec.py` qui permet de regrouper tous les fichiers descripteurs. Ce programme est disponible sur _GitHub_ (https://github.com/wulfebw/mergevec).
 <br/>
 <br/>
-On éxécute le programme en tapant la commance suivante : "python3 mergevec.py -v samples -o out.vec"
-<br/>
-<br/>
-Ce programme prend en option le dossier contenant les descripteurs (-v), et le fichier à générer (-o).
+On éxécute le programme en tapant la commance suivante : 
+```bash
+python3 mergevec.py -v samples -o out.vec
+```
+Ce programme prend en option le dossier contenant les descripteurs (`-v`), et le fichier à générer (`-o`).
 
-* Entrainer le classificateur
+* Entrainer le classifieur
 
-Maintenant que nous avons notre fichier descripteur, nous devons entraîner le classificateur.
+Maintenant que nous avons notre fichier descripteur, nous devons entraîner le classifieur.
 <br/>
-Mais avant cela, créons un dossier qui contiendra notre classificateur et les différents fichiers générés à chaque étape de l’entraînement. Il s'agit du dossier "data" 
+Mais avant cela, créons un dossier qui contiendra notre classifieur et les différents fichiers générés à chaque étape de l’entraînement. Il s'agit du dossier "data" 
 <br/>
 <img src="dossier_data.JPG" width=500 align=left/>
 
 Maintenant, comme avec l'entraînement du classifieur cascade avec une image du visage à détecter nous allons utliser l'éxécutable opencv_traincascade de la manière suivante afin d'entrainer le classifier : 
-<br/>
-<br/>
-"opencv_traincascade -data data -vec out.vec -bg negatives.txt -numPos 780 -numNeg 200 -numStages 20 -w 20 -h 20"
-<br/>
-<br/>
-Ce commande prend du temps à s'éxécuter comme avec l'entraînement du classifieur cascade avec une image du visage à détecter.
-<br/>
-<br/>
-Cet outil prend en argument le dossier qui contiendra le classificateur entraîné (-data), notre fichier descripteur postives.vec (-vec), la liste des images négatives (-bg).
+```bash
+opencv_traincascade -data data -vec out.vec -bg negatives.txt -numPos 780 -numNeg 200 -numStages 20 -w 20 -h 20
+```
 
-Nous indiquons également le nombre d’images positives (-numPos) et le nombre d’images négatives (-numNeg) qui seront utilisés à chaque itération. Le nombre d’images à utiliser doit être inférieur au nombre d’images disponible. Enfin, nous indiquons le nombre de itérations à entraîner (-numStages) ainsi que la taille, en pixel des échantillons (-w -h).
+Cette commande prend du temps à s'exécuter comme avec l'entraînement du classifieur cascade avec une image du visage à détecter.
+<br/>
+<br/>
+Cet outil prend en argument le dossier qui contiendra le classifieur entraîné (`-data`), notre fichier descripteur postives.vec (`-vec`), la liste des images négatives (`-bg`).
 
-* Test du classificateur
+Nous indiquons également le nombre d’images positives (`-numPos`) et le nombre d’images négatives (`-numNeg`) qui seront utilisés à chaque itération. Le nombre d’images à utiliser doit être inférieur au nombre d’images disponibles. Enfin, nous indiquons le nombre d'itérations pour l'entraînement (`-numStages`) ainsi que la taille, en pixels des échantillons (`-w` `-h`).
 
-Une fois l'entrînement fini, il suffit d'utiliser le même script qui a permis l'entrainement du classifieur cascade avec une image du visage à détecter mais il faut seulement changer le fichier xml. 
+* Test du classifieur
+
+Une fois l'entraînement fini, il suffit d'utiliser le même script qui a permis l'entrainement du classifieur cascade avec une image du visage à détecter mais il faut seulement changer le fichier xml. 
 <br/>
 Voici le résulat avec une photo de Barack Obama
 <br/>
@@ -417,13 +425,13 @@ Voici le résulat avec une photo de Barack Obama
 <img src="classifieur.JPG" width=500 align=left/>
 <br/>
 
-Comme on peut le voir le classifier a réussi à détecter des visages. Néanmoins, il n'arrive pas à détecter le visage de Barack Obama en particulier.
-On en déduit la limite du classifier : il n'arrive pas à détecter un visage en particulier.
+Comme on peut le voir le classifieur a réussi à détecter des visages. Néanmoins, il n'arrive pas à détecter le visage de Barack Obama en particulier.
+On en déduit la limite du classifieur : il n'arrive pas à détecter un visage en particulier.
 On a donc trouvé une nouvelle solution : le recognizer.
 
 # Nouvelle solution : Recognizer
 
-Le recognizer est une méthode qui permet, à l'aide d'un classifieur cascade, de détecter un visage mais aussi de le reconnaître à partir d'une base de données. Nous allons utiliser la dernière version d'_OpenCV_ (_OpenCV_ 4) qui contient l'outil "example_face_facerec_video" qui permet de faire fonctionner le recognizer.
+Le recognizer est une méthode qui permet, à l'aide d'un classifieur cascade, de détecter un visage mais aussi de le reconnaître à partir d'une base de données. Nous allons utiliser la dernière version d'_OpenCV_ (_OpenCV_ 4) qui contient l'outil `example_face_facerec_video` qui permet de faire fonctionner le recognizer.
 <br/>
 <br/>
 Cet outil a besoin de trois élements pour fonctionner : une entrée vidéo, un classifieur cascade entraîné et un fichier CSV.
@@ -438,7 +446,7 @@ Un fichier CSV est un fichier qui contient les chemins des images des visages à
 Tout d'abord, il nous faut des photos des visages à reconnaître.
 <img src="photos_csv.JPG" width=500 align=left/>
 <br/>
-Mais ces images n'ont pas toutes les mêmes dimensions ce qui pose problème au recognizer. Il faut donc les redimmensionner en les recentrant par rapport à la position des yeux. Pour ce faire, nous allons utiliser un script en Python disponible sur GitHub (https://github.com/vbouvardge1/projet-vision/tree/facerecognizer). 
+Mais ces images n'ont pas toutes les mêmes dimensions ce qui pose problème au recognizer. Il faut donc les redimmensionner en les recentrant par rapport à la position des yeux. Pour ce faire, nous allons utiliser un script en Python disponible sur _GitHub_ (https://github.com/atrantan/projet-vision/blob/facerecognizer/script/alignement.py). 
 <br/>
 <br/>
 Après redimmensionnement des images, on obtient ceci :
@@ -449,7 +457,7 @@ Maintenant nous pouvons créer notre fichier CSV. Il doit réspecter une syntaxe
 
 ## Test du recognizer
 
-Nous avons désormais tous les éléments pour faire fonctionner le recognizer. Pour cela, nous allons utiliser l'outil "example_face_facerec_video" de la manière suivante : 
+Nous avons désormais tous les éléments pour faire fonctionner le recognizer. Pour cela, nous allons utiliser l'outil `example_face_facerec_video` de la manière suivante : 
 
 ```bash 
 example_face_facerec_video.exe C:/travail/bouvard2/opencv_master/data/haarcascade_frontalface_alt.xml C:/travail/bouvard2/FaceRecognizer/persons.csv 0 
