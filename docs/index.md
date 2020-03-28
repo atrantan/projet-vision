@@ -4,7 +4,7 @@ Dans le cadre de notre projet de fin d'étude, nous allons réaliser un module d
 
 # Préambule
 
-La vision par ordinateur est un thème que l'on retrouve partout dans les technologies modernes
+La vision par ordinateur est un thème que l'on retrouve partout dans les technologies modernes. La vision 
 
 # 1. Déroulement du projet S4 
 
