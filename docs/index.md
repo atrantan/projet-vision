@@ -4,7 +4,42 @@ Dans le cadre de notre projet de fin d'étude, nous allons réaliser un module d
 
 # Préambule
 
-La vision par ordinateur est un thème que l'on retrouve partout dans les technologies modernes. La vision 
+La vision par ordinateur est un thème que l'on retrouve partout dans les technologies modernes. Elle peut se définir comme la transformation des données reçues que ce soit des images ou des vidéos en données (est-ce que l'objet voulu est dans le champ de vision) ou en nouvelles données (transformation d'une image en couleur en une image noir & blanc). 
+
+Le concept de vision, pour l'être humain, est une notion très simple : nous pouvons reconnaître des objets très facilement. Ceci est possible grâce à notre cerveau. Le cerveau humain fait passer le signal de vision reçu par l'oeil dans plusieurs canaux (ou synapses) qui vont chacun extraire des informations différentes. Il identifie dans l’image les informations pertinentes à examiner et ignore les informations non pertinentes. 
+
+Les informations pertinentes repartent dans le sens inverse afin de ”recalibrer” les canaux et ”recalibrer” l’oeil en réponse au traitement du cerveau. C'est le cas pour :
+- L’iris réglera spécifiquement la luminosité
+- La surface rétinienne réglera spécifiquement la réception du signal
+
+Le traitement des signaux de vision est réitéré en permanence par le cerveau, il cerveau ne cesse d'apprendre. Chaque traitements fait appel aux traitements précédents issus de plusieurs années d’expérience ce qui permet de traiter les informations aussi rapidement et spontanément.
+Grâce à sa vision, l’être humain par exemple :
+- Reconnaître une voiture sur une image
+- Retrouver Charli dans le livre "où est Charli"
+- Reconnaître différentes formes géométriques sur un croquis
+
+On peut alors s'intéresser au traitement artificiel du signal de vision. Un ordianteur ne peut traiter que des series de 1 ou 0 issu d'une caméra ou d'un périphérique externe. A l'inverse de l'être humain, la machine ne peut donc pas naturellement :
+- Reconnaître des motifs spéficiques
+- Contrôler la réception d’un signal de vision
+- Croiser des traitements issus d’années d’expérience
+
+Pour le moment, les systèmes qui intègrent de la vision par ordinateur sont plutôt naïf. On peut prendre l'exemple de la détection d'une voiture. Le problème survient au niveau du rétroviseur : 
+- L’être humain est conscient quel’image qu’affiche le rétroviseur est une version inversée de la scène
+- L'ordinateur, ne voit juste qu’un tableau de nombres 
+
+On peut aussi prendre un exemple différent qui est celui consistant à reconnaître une scène 3D à partir d’images 2D. Les mêmes images 2D peuvent amener à une infinité de scènes 3D possibles La reconstruction du signal 3D est donc effectuée de manière empirique. Les images 2D peuvent potentiellement de mauvaise qualité c'est à dire être déformées ou bruitées. Cela rend la tâche encore plus difficile.
+
+Pour régler ce problème, il nous faut avoir une bonne connaissance du contexte des images qui permet de ”donner sens” aux prises de vue. Il existe principalement 2 solutions pour obtenir des informations du contexte : 
+- On peut mesurer des grandeurs pertinentes en utilisant des capteurs autres que
+les caméras de vision.
+- On peut mesurer des grandeurs pertinentes avec un programme qui ”devine” leur valeur directement à partir des images reçues par les caméras de vision
+  - Pour cela, il sera nécessaire d’entraîner le programme à reconnaître des valeurs à partir d’exemples d’images : il s'agit du Machine Learning
+
+Le Machine Learning est un moyen de transformer une série d’images en perceptions. On donne la capacité à un programme d’interpréter l’environnement
+extérieur en utilisant juste des images prédéfinies. 
+
+Dans le cadre de notre projet S4, nous utilisons la vision par ordinateur et le Machine Learning afin de pouvoir reconnaître des visages.
+
 
 # 1. Déroulement du projet S4 
 
