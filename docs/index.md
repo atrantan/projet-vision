@@ -8,6 +8,9 @@ La vision par ordinateur est un thème que l'on retrouve partout dans les techno
 
 # 1. Déroulement du projet S4 
 
+<p align=&quot;center&quot;img src=&quot;gantt.jpg>
+<img src="gantt.jpg" width=900 align=center>
+
 # 2. _OpenCV_, en quelques mots
 
 _OpenCV_ qui signifie Open Computer Vision est une bibliothèque open source initialement développée par **_Intel_** et qui est spécialisée dans le traitement de l’image. Elle permet de coder des programmes en langage C++, Python ou Java. Dans le cadre de notre projet, nous utilisons _OpenCV_ en utilisant à la fois le  langage C++ et le langage Python.
