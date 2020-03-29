@@ -38,7 +38,7 @@ les caméras de vision.
 Le Machine Learning est un moyen de transformer une série d’images en perceptions. On donne la capacité à un programme d’interpréter l’environnement
 extérieur en utilisant juste des images prédéfinies. 
 
-Dans le cadre de notre projet S4, nous utilisons la vision par ordinateur et le Machine Learning afin de pouvoir reconnaître des visages.
+Dans le cadre de notre projet S4, nous utilisons la vision par ordinateur et le Machine Learning afin de pouvoir reconnaître des visages. Notre projet est structuré en plusieurs étapes que nous pouvons observer dans la partie suivante.
 
 
 # 1. Déroulement du projet S4 
@@ -129,16 +129,16 @@ Prérequis :
 
 ## 2.2 Les modules _OpenCV_ qui nous intéressent
 
-_Cascade Classifier_ et _Face Analysis_
+La bibliothèque _OpenCV_ contient de nombreux modules pour réaliser un grand nombre d'applications diverses et variées. Néanmoins, dans le cadre de notre projet S4, nous allons nous concentrer sur 2 modules bien spécifiques : _Cascade Classifier_ et _Face Analysis_. Le module _Face Analysis_ permet d'utiliser des outils afin de reconnaître des visages. Quant au module _Cascade Classiifer_, il permet de réaliser le Machine Learning afin d'apprendre à l'ordinateur à réconnaître un visage en particulier. Le classifieur utilisé sera le classifieur LBP que nous allons introduire tout de suite.
 
-# Algorithme LBP
+# 3. Classifieur LBP
 
 Le modèle binaire local (LBP en anglais) sont des caractéristiques utilisées en vision par ordinateur pour reconnaître des textures.
 
-## Définition d'une image numérique
+## 3.1 Définition d'une image numérique
 
 Une image est définie par un nombre de pixels en hauteur et en largeur. Chaque pixel est la résulante de la synthèse additive de nuance de rouge, bleu, vert (codage RGB).
-Chaque nuances de couleurs sont codées sur 8 bits donc elles peuvent prendre 256 valeurs : 0 à 255.
+Chaque nuances de couleurs sont codées sur 8 bits donc elles peuvent prendre 256 valeurs : 0 à 255. Maintenant que nous avons défini une image numrique, nous devons appliquer une transformation celle-ci. C'est ici qu'intervient le classifieur LBP.
 
 
 <img src="rgb-cymk_01.gif" width=400 align=left>
@@ -160,7 +160,7 @@ Chaque nuances de couleurs sont codées sur 8 bits donc elles peuvent prendre 25
 <br/>
 
 
-## Principe
+## 3.2 Principe
 
 Le principe est d'étiqueter les pixels d'une image en seuillant le voisinage de chaque pixel et considèrer le résultat comme un nombre binaire sur 8 bits.
 Ce traitement est possible si on prend pas en compte les pixels des bords de l'image car ils ne possèdent pas assez de pixels à leur voisinnage.
@@ -195,7 +195,9 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 <img src="Capture4.PNG" width=300 align=left>
 <br/>
 
-## Mise en pratique
+On sait désormais comment fonctionne le classifier LBP. Nous pouvons donc désormais le mettre en pratique.
+
+## 3.3 Mise en pratique
 
 Nous allons maintenant transformer une image avec l'algorithme LBP. Pour ce faire nous allons utiliser une photo de Barack Obama disponible ci-dessous et un script python disponible sur _GitHub_ (https://github.com/atrantan/projet-vision/blob/algorithme-LBP/python/script.py).
      
@@ -209,10 +211,12 @@ Après traitement, on obtient le résultat suivant :
 <img src="obama_countours.jpg" width=300 align=left/>
 <br/>
 
-Comme nous pouvons le voir le visage de Barack Obama est composé d'une nuance de gris particulière ce qui permet de reconnaître son visage.
+Comme nous pouvons le voir le visage de Barack Obama est composé d'une nuance de gris particulière ce qui permet de reconnaître son visage. 
+
+La machine sait désormais, grâce au classifieur, comment détecter un visage. Maintenant, il faut apprendre à la machine comment détecter un visage en particulier : elle va s'entraîner avec un visage défini. 
 
 
-# Entraînement du classifieur cascade avec une seule image du visage à détecter
+# 4. Entraînement du classifieur cascade avec une seule image du visage à détecter
 
 Le classifieur cascade permet théoriquement de reconnaître des visages en entraînant ce classifieur de la manière suivante.
 
@@ -381,12 +385,12 @@ On obtient le résultat suivant :
 <br/>
 <img src="visage_image.jpg" width=400 align=left/>
 <br/>
-Comme on peut le voir le classifier a réussi à détecter le visage mais il y a eu 4 autres détections parisites.
+Comme on peut le voir le classifier a réussi à détecter le visage mais il y a eu 4 autres détections parisites. L'identification du visage de Barack Obama est un échec. Il faut donc mieux apprendre à la machine comment détecter le visage de Barack Obame. Pour ce faire, nous n'allons pas utiliser une image de Barack Obama mais plusieurs images.
 
 
 <br/>
 
-# Entraînement du classifieur cascade avec plusieurs images du visage à détecter
+# 5. Entraînement du classifieur cascade avec plusieurs images du visage à détecter
 
 * Rassembler les visages 
 
@@ -470,17 +474,19 @@ Comme on peut le voir le classifieur a réussi à détecter des visages. Néanmo
 On en déduit la limite du classifieur : il n'arrive pas à détecter un visage en particulier.
 On a donc trouvé une nouvelle solution : le recognizer.
 
-# Nouvelle solution : Recognizer
+# 6. Nouvelle solution : Recognizer
 
 Le recognizer est une méthode qui permet, à l'aide d'un classifieur cascade, de détecter un visage mais aussi de le reconnaître à partir d'une base de données. Nous allons utiliser la dernière version d'_OpenCV_ (_OpenCV_ 4) qui contient l'outil `example_face_facerec_video` qui permet de faire fonctionner le recognizer.
 <br/>
 <br/>
-Cet outil a besoin de trois élements pour fonctionner : une entrée vidéo, un classifieur cascade entraîné et un fichier CSV.
+Cet outil a besoin de 3 élements pour fonctionner : une entrée vidéo, un classifieur cascade entraîné et un fichier CSV.
 <br/>
 <br/>
 Pour ce qui est de l'entrée vidéo nous allons utliser une webcam et pour le classifieur entraîné nous allons utiliser le classifieur cascade fourni par _OpenCV_.
 
-## Création du fichier CSV
+Nous avons 2 des 3 élements nécessaires. Le seul élement manquant est le fichier CSV. Nous allons le créer de nous-même en suivant les étapes qui vont suivre.
+
+## 6.1 Création du fichier CSV
 
 Un fichier CSV est un fichier qui contient les chemins des images des visages à reconnaître.
 <br/>
@@ -496,7 +502,8 @@ Après redimmensionnement des images, on obtient ceci :
 Maintenant nous pouvons créer notre fichier CSV. Il doit réspecter une syntaxe particulière : il est composé du chemin de l'image suivi d'un point virgule puis d'un indice qui caractérise ce visage. On répète cette syntaxe pour toutes les images.
 <img src="csv.JPG" width=500 align=left/>
 
-## Test du recognizer
+Une fois le fichier CSV obtenu, nous pouvons tester le recognizer dans l'étape qui va suivre.
+## 6.2 Test du recognizer
 
 Nous avons désormais tous les éléments pour faire fonctionner le recognizer. Pour cela, nous allons utiliser l'outil `example_face_facerec_video` de la manière suivante : 
 
@@ -511,4 +518,6 @@ Une fois l'exécutable lancé, on obtient ceci :
 <br/>
 <img src="recognizer.JPG" width=500 align=left/>
 <br/>
-On observe que cette fois-ci on arrive à détecter des visages mais on arrive aussi à reconnaître le visage détecté. Nous avons résolu le problème du classifieur cascade. Néanmoins, chaque visage détecté doit être affilié à un visage dans la base de donnée. 
+On observe que cette fois-ci on arrive à détecter des visages mais on arrive aussi à reconnaître le visage détecté. Nous avons résolu le problème du classifieur cascade. Néanmoins, chaque visage détecté doit être affilié à un visage dans la base de données. 
+
+7. Conclusion
