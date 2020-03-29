@@ -43,8 +43,10 @@ Dans le cadre de notre projet S4, nous utilisons la vision par ordinateur et le 
 
 # 1. Déroulement du projet S4 
 
-<p align=&quot;center&quot;img src=&quot;gantt.jpg>
-<img src="gantt.jpg" width=900 align=center>
+<p align=&quot;center&quot;img src=&quot;gantt.jpg/>
+
+Ce diagramme de Gantt représente les avancements des taches effectués afin de mener a bien se projet en fonction du temps. Les taches sont notés a gauche et les barres bleus representent la durée de chaque taches.
+Les principales taches effectuées ont été la préparation du projet du 20/01 au 27/01, les différentes phase de test du 27/01 au 25/02 puis la rédaction du rapport et de la présentation du projet du 25/02 au 03/04.
 
 # 2. _OpenCV_, en quelques mots
 
