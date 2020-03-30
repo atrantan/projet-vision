@@ -472,11 +472,11 @@ Voici le résulat avec une photo de Barack Obama
 
 Comme on peut le voir le classifieur a réussi à détecter des visages. Néanmoins, il n'arrive pas à détecter le visage de Barack Obama en particulier.
 On en déduit la limite du classifieur : il n'arrive pas à détecter un visage en particulier.
-On a donc trouvé une nouvelle solution : le recognizer.
+On a donc trouvé une nouvelle solution : le _recognizer_.
 
 # 6. Nouvelle solution : Recognizer
 
-Le recognizer est une méthode qui permet, à l'aide d'un classifieur cascade, de détecter un visage mais aussi de le reconnaître à partir d'une base de données. Nous allons utiliser la dernière version d'_OpenCV_ (_OpenCV_ 4) qui contient l'outil `example_face_facerec_video` qui permet de faire fonctionner le recognizer.
+Le _recognizer_ est une méthode qui permet, à l'aide d'un classifieur cascade, de détecter un visage mais aussi de le reconnaître à partir d'une base de données. Nous allons utiliser la dernière version d'_OpenCV_ (_OpenCV_ 4) qui contient l'outil `example_face_facerec_video` qui permet de faire fonctionner le _recognizer_.
 <br/>
 <br/>
 Cet outil a besoin de 3 élements pour fonctionner : une entrée vidéo, un classifieur cascade entraîné et un fichier CSV.
@@ -493,7 +493,7 @@ Un fichier CSV est un fichier qui contient les chemins des images des visages à
 Tout d'abord, il nous faut des photos des visages à reconnaître.
 <img src="photos_csv.JPG" width=500 align=left/>
 <br/>
-Mais ces images n'ont pas toutes les mêmes dimensions ce qui pose problème au recognizer. Il faut donc les redimmensionner en les recentrant par rapport à la position des yeux. Pour ce faire, nous allons utiliser un script en Python disponible sur _GitHub_ (https://github.com/atrantan/projet-vision/blob/facerecognizer/script/alignement.py). 
+Mais ces images n'ont pas toutes les mêmes dimensions ce qui pose problème au _recognizer_. Il faut donc les redimmensionner en les recentrant par rapport à la position des yeux. Pour ce faire, nous allons utiliser un script en Python disponible sur _GitHub_ (https://github.com/atrantan/projet-vision/blob/face_recognizer_/script/alignement.py). 
 <br/>
 <br/>
 Après redimmensionnement des images, on obtient ceci :
@@ -502,10 +502,10 @@ Après redimmensionnement des images, on obtient ceci :
 Maintenant nous pouvons créer notre fichier CSV. Il doit réspecter une syntaxe particulière : il est composé du chemin de l'image suivi d'un point virgule puis d'un indice qui caractérise ce visage. On répète cette syntaxe pour toutes les images.
 <img src="csv.JPG" width=500 align=left/>
 
-Une fois le fichier CSV obtenu, nous pouvons tester le recognizer dans l'étape qui va suivre.
-## 6.2 Test du recognizer
+Une fois le fichier CSV obtenu, nous pouvons tester le _recognizer_ dans l'étape qui va suivre.
+## 6.2 Test du _recognizer_
 
-Nous avons désormais tous les éléments pour faire fonctionner le recognizer. Pour cela, nous allons utiliser l'outil `example_face_facerec_video` de la manière suivante : 
+Nous avons désormais tous les éléments pour faire fonctionner le _recognizer_. Pour cela, nous allons utiliser l'outil `example_face_facerec_video` de la manière suivante : 
 
 ```bash 
 example_face_facerec_video.exe C:/travail/bouvard2/opencv_master/data/haarcascade_frontalface_alt.xml C:/travail/bouvard2/FaceRecognizer/persons.csv 0 
@@ -521,3 +521,22 @@ Une fois l'exécutable lancé, on obtient ceci :
 On observe que cette fois-ci on arrive à détecter des visages mais on arrive aussi à reconnaître le visage détecté. Nous avons résolu le problème du classifieur cascade. Néanmoins, chaque visage détecté doit être affilié à un visage dans la base de données. 
 
 7. Conclusion
+
+Maintenant que notre projet S4 est terminé, nous pouvons revenir sur certaines étapes clés de sa réalisation.
+
+Tout d'abord, l'utilisation d'une bibliothèque de traitement d'images telle qu' _OpenCV_ nous a permis de gagner un temps précieux et était essentielle au succès de notre projet S4. Elle a mis à notre disposition des fonctionnalités essentielles dans la réalisation de ce projet tel que le module _Cascade Classifier_ ainsi que le module _Face Analysis_. Ces fonctionnalités nous ont permis de réaliser un classifieur cascade ainsi que notre _recognizer_. En l'absence de cette bibliothèque, nous n'aurions pas eu le temps ni les connaisances nécessaires pour mener à bien ce projet. Plusieurs centaines de personnes travaillent sur celle-ci pour l'améliorer jours après jours.
+
+Ensuite, nous pouvons revenir sur les différents échecs de la reconnaissance d'un visage :
+- Le premier test a été réalisé avec un classifieur cascade ainsi qu'une seule image du visage de Barack Obama :
+  - Les résultats ont été très peu concluants : le visage a été reconnu mais il a aussi eu de nombreuses erreurs de reconnaissances
+- Le deuxième test a été réalisé avec un classifieur cascade ainsi qu'une seule image du visage de Barack Obama :
+  - Les résulats ont été un peu plus concluants : cette fois aucunes erreurs sur la détection de visage mais il ne reconnait pas en particulier le visage de Barack Obama.
+
+Ces 2 échecs nous montrent les limites du classfieur cascade : il reconnait "des" visages mais pas "un" visage. C'est cette nuance qui nous a posé problème. Nous n'avons plus de marge de progression sur le classfieur cascade. Il nous fallait donc un autre outil afin de compenser ce problème. En cherchant parmis les fonctionnalités proposées pas la bibliothèque _OpenCV_, nous avons trouvé la solution au problème. Il s'agit du _recognizer_.    
+
+Notre programme de reconnaissance de visages s'est donc ensuite appuyé sur un _recongnizer_ qui utilisait le _classifieur cascade_ précèdent. Les résultats du _recognizer_ étaient conluants : les visages sont détectés et sont reconnus. La tâche est accomplie. Néanmoins, il y a une limite à cette reconnaissance de visages avec le _recognizer_ : chaque visage détecté doit être affecté à un visage dans la base de données.
+
+Pour terminer, nous pouvons revenir sur les contraintes que nous avons recontrer :
+- L'apprentissage du _classfieur cascade_ était extrêmement long : 1 ou 2 jours parfois.
+- L'installation de la bibliothèque _OpenCV_ était très longue et complexe.
+- Le contexte sociétal nous a fait perdre du temps.
