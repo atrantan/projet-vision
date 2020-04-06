@@ -554,7 +554,7 @@ Une fois l'exécutable lancé, on obtient ceci :
 <br/>
 On observe que cette fois-ci on arrive à détecter des visages mais on arrive aussi à reconnaître le visage détecté. Nous avons résolu le problème du classifieur cascade. Néanmoins, chaque visage détecté doit être affilié à un visage dans la base de données. 
 
-7. Conclusion
+##7. Conclusion
 
 Maintenant que notre projet S4 est terminé, nous pouvons revenir sur certaines étapes clés de sa réalisation.
 
