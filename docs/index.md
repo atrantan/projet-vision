@@ -555,7 +555,6 @@ Une fois l'exécutable lancé, on obtient ceci :
 On observe que cette fois-ci on arrive à détecter des visages mais on arrive aussi à reconnaître le visage détecté. Nous avons résolu le problème du classifieur cascade. Néanmoins, chaque visage détecté doit être affilié à un visage dans la base de données. 
 
 7. Conclusion
-<<<<<<< HEAD
 
 Maintenant que notre projet S4 est terminé, nous pouvons revenir sur certaines étapes clés de sa réalisation.
 
@@ -575,5 +574,3 @@ Pour terminer, nous pouvons revenir sur les contraintes que nous avons recontrer
 - L'apprentissage du _classfieur cascade_ était extrêmement long : 1 ou 2 jours parfois.
 - L'installation de la bibliothèque _OpenCV_ était très longue et complexe.
 - Le contexte sociétal nous a fait perdre du temps.
-=======
->>>>>>> 89b6b786cc058b1fe6912ec0f9163d3689a011a7
