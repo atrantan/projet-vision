@@ -43,8 +43,7 @@ Dans le cadre de notre projet S4, nous utilisons la vision par ordinateur et le 
 
 # 1. Déroulement du projet S4 
 
-<p align=&quot;center&quot;img src=&quot;gantt.jpg/>
-<img src="gantt.jpg" width=900 align=center/>
+<p align="center"> <img src="gantt.jpg" style="width:900px;"> </p>
 
 Ce diagramme de Gantt représente les avancements des taches effectués afin de mener a bien se projet en fonction du temps. Les taches sont notés a gauche et les barres bleus representent la durée de chaque taches.
 Les principales taches effectuées ont été la préparation du projet du 20/01 au 27/01, les différentes phase de test du 27/01 au 25/02 puis la rédaction du rapport et de la présentation du projet du 25/02 au 03/04.
@@ -74,64 +73,55 @@ Prérequis :
 - Télécharger **VSCode** [ici](https://code.visualstudio.com/download)
 
 ### 1) Ouvrir _CMake_ gui et chercher votre fichier _OpenCV_ et votre dossier de Build.
-<p align=&quot;center&quot;img src=&quot;Capture1.JPG/>
-<img src="Capture1.JPG" width=600 align=center>
+<p align="left"> <img src="Capture1.JPG" style="width:600px;"> </p>
 <br/>
 <br/>
 <br/>
 
 ### 2) Configurer _OpenCV_.
-<p align=&quot;center&quot;img src=&quot;Capture2.JPG/>
-<img src="Capture2.JPG" width=600 align=left/>
+<p align="left"> <img src="Capture2.JPG" style="width:600px;"> </p>
 <br/>
 <br/>
 <br/>
 
 ### 3) Pour changer les paramètres suivants, vous pouvez vous aider de la barre de recherche.
-<p align=&quot;center&quot;img src=&quot;Capture3.JPG/>
-<img src="Capture3.JPG" width=600 align=left/>
+<p align="left"> <img src="Capture3.JPG" style="width:600px;"> </p>
 <br/>
 <br/>
 <br/>
 
 ### 4) Reconfigurer et regénérer _OpenCV_ avec les paramètres mis à jour.
-<p align=&quot;center&quot;img src=&quot;Capture4.JPG/>
-<img src="Capture4.JPG" width=600 align=left/>
+<p align="left"> <img src="Capture4.JPG" style="width:600px;"> </p>
 <br/>
 <br/>
 <br/>
 
 ### 5) Maintenant nous allons ouvrir VS Code afin d’installer les modules complémentaire de _OpenCV_. Ouvrir donc le dossier _OpenCV_ dans VS Code et installer les extensions proposées dont _CMake_ et _CMake_ Tools.
-<p align=&quot;center&quot;img src=&quot;Capture5.JPG/>
-<img src="Capture5.JPG" width=400 align=left/>
+<p align="left"> <img src="Capture5.JPG" style="width:400px;"> </p>
 <br/>
 <br/>
 <br/>
 
 ### 6) Cliquer sur le logo configure et choisir le kit "VisualStudioCommunity_amd64"
-<p align=&quot;center&quot;img src=&quot;Capture6.JPG/>
-<img src="Capture6.JPG" width=800 align=left/>
+<p align="left"> <img src="Capture6.JPG" style="width:800px;"> </p>
 <br/>
 <br/>
 <br/>
 
 ### 7) Apres la configuration cliquer sur le logo build.
-<p align=&quot;center&quot;img src=&quot;Capture7.JPG/>
-<img src="Capture7.JPG" width=600 align=left/>
+<p align="left"> <img src="Capture7.JPG" style="width:700px;"> </p>
 <br/>
 <br/>
 <br/>
 
 ### 8) Si le terminal affiche "La build s'est achevée avec le code de sortie 0" vous avez terminé! _OpenCV_ et _OpenCV_ contrib sont opérationnels.
-<p align=&quot;center&quot;img src=&quot;Capture8.JPG/>
-<img src="Capture8.JPG" width=1000 align=left/>
+<p align="left"> <img src="Capture8.JPG" style="width:1000px;"> </p>
 <br/>
 <br/>
 <br/>
 
 ### 9) Si le terminal affiche La build s'est achevée avec le code de sortie 1  cela signifie une erreur, alors aller dans le fichier .\opencv\build\bin et supprimer tout ce qui si trouve, vérifier les étapes précédente, notamment les erreurs qui peuvent être indiquer dans les terminaux et refaite la procédure depuis le début. Pour la partie sur VS Code vous pouvez aussi utiliser les touches suivantes :
-<p align=&quot;center&quot;img src=&quot;Capture9.JPG/>
-<img src="Capture9.JPG" width=1000 align=left/>
+<p align="left"> <img src="Capture9.JPG" style="width:1000px;"> </p>
 <br/>
 <br/>
 <br/>
@@ -149,8 +139,7 @@ Le modèle binaire local (LBP en anglais) sont des caractéristiques utilisées 
 Une image est définie par un nombre de pixels en hauteur et en largeur. Chaque pixel est la résulante de la synthèse additive de nuance de rouge, bleu, vert (codage RGB).
 Chaque nuances de couleurs sont codées sur 8 bits donc elles peuvent prendre 256 valeurs : 0 à 255. Maintenant que nous avons défini une image numrique, nous devons appliquer une transformation celle-ci. C'est ici qu'intervient le classifieur LBP.
 
-<p align=&quot;center&quot;img src=&quot;rgb-cymk_01.gif/>
-<img src="rgb-cymk_01.gif" width=400 align=left>
+<p align="left"> <img src="rgb-cymk_01.gif" style="width:400px;"> </p>
 
 <br/>
 <br/>
@@ -177,8 +166,7 @@ Ce traitement est possible si on prend pas en compte les pixels des bords de l'i
 On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel choisi :
 * On compare chaque pixels avoisinnants avec le pixel choisi.
 <br/>
-<p align=&quot;center&quot;img src=&quot;Capture1.PNG/>
-<img src="Capture1.PNG" width=100 align=left/>
+<p align="left"> <img src="Capture1.PNG" style="width:100px;"> </p>
 <br/>
 <br/>
 <br/>
@@ -186,8 +174,7 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 <br/>
 * Si le pixel au voisinage est plus grand ou égal que le pixel choisi alors le pixel avoisinnant prend la valeur binaire "1" sinon il vaut "0".
 <br/>
-<p align=&quot;center&quot;img src=&quot;Capture2.PNG/>
-<img src="Capture2.PNG" width=100 align=left/>
+<p align="left"> <img src="Capture2.PNG" style="width:100px;"> </p>
 <br/>
 <br/>
 <br/>
@@ -195,8 +182,7 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 <br/>
 * Le premier pixel comparé correspond au LSB (bit 0) et le dernier au MSB (bit 7).
 <br/>
-<p align=&quot;center&quot;img src=&quot;Capture3.PNG/>
-<img src="Capture3.PNG" width=100 align=left/>
+<p align="left"> <img src="Capture3.PNG" style="width:100px;"> </p>
 <br/>
 <br/>
 <br/>
@@ -204,8 +190,7 @@ On prend les 8 pixels dans l'ordre des aiguilles d'une montre autour du pixel ch
 <br/>
 * Le pixel choisi se voit attribué la valeur décimale des bits avoisinnants.
 <br/>
-<p align=&quot;center&quot;img src=&quot;Capture4.PNG/>
-<img src="Capture4.PNG" width=300 align=left/>
+<p align="left"> <img src="Capture4.PNG" style="width:300px;"> </p>
 <br/>
 
 On sait désormais comment fonctionne le classifier LBP. Nous pouvons donc désormais le mettre en pratique.
@@ -214,16 +199,14 @@ On sait désormais comment fonctionne le classifier LBP. Nous pouvons donc déso
 
 Nous allons maintenant transformer une image avec l'algorithme LBP. Pour ce faire nous allons utiliser une photo de Barack Obama disponible ci-dessous et un script python disponible sur _GitHub_ (https://github.com/atrantan/projet-vision/blob/algorithme-LBP/python/script.py).
 
- <p align=&quot;center&quot;img src=&quot;Poster-sized_portrait_of_Barack_Obama.jpg/>
-<img src="Poster-sized_portrait_of_Barack_Obama.jpg" width=300 align=left/>
+<p align="left"> <img src="Poster-sized_portrait_of_Barack_Obama.jpg" style="width:300px;"> </p>
 <br/>
 
 
 
 Après traitement, on obtient le résultat suivant : 
 
-<p align=&quot;center&quot;img src=&quot;obama_countours.jpg/>
-<img src="obama_countours.jpg" width=300 align=left/>
+<p align="left"> <img src="obama_countours.jpg" style="width:300px;"> </p>
 <br/>
 
 Comme nous pouvons le voir le visage de Barack Obama est composé d'une nuance de gris particulière ce qui permet de reconnaître son visage. 
@@ -284,8 +267,7 @@ opencv_createsamples -img stop.png -bg negatives.txt -info positives/positives.l
 Cette commande nous permet de générer 600 images positives à partir des images négatives et un fichier "positives.lst" qui contient les informations relatives aux images positives.
 Le fichier ressemble à ceci :
 <br/>
-<p align=&quot;center&quot;img src=&quot;Capture-d’écran-2019-03-11-à-19.30.36.png/>
-<img src="Capture-d’écran-2019-03-11-à-19.30.36.png" width=500 align=left/> 
+<p align="left"> <img src="Capture-d’écran-2019-03-11-à-19.30.36.png" style="width:500px;"> </p>
 <br/>
 <br/>
 <br/>
@@ -302,8 +284,7 @@ Le fichier ressemble à ceci :
 Le resultat obtenu ressemble à ceci :
 <br/>
 <br/>
-<p align=&quot;center&quot;img src=&quot;0050_0215_0113_0176_0176.jpg/>
-<img src="0050_0215_0113_0176_0176.jpg" width=500 align=left/>
+<p align="left"> <img src="0050_0215_0113_0176_0176.jpg" style="width:500px;"> </p>
 <br/>
 <br/>
 <br/>
@@ -339,8 +320,7 @@ Tout est prêt, nous pouvons passer à l’apprentissage du classifieur.
 
 Nous commençons par créer un dossier data qui contiendra notre classifieur. Puis nous appelons l’outil `opencv_traincascade`, qui permet d’entraîner une cascade.
 <br/>
-<p align=&quot;center&quot;img src=&quot;dossier_data.JPG/>
-<img src="dossier_data.JPG" width=500 align=left/>
+<p align="left"> <img src="dossier_data.JPG" style="width:500px;"> </p>
 <br/>
 Cet outil prend en argument le dossier qui contiendra le classifieur entraîné (`-data`), notre fichier descripteur postives.vec (`-vec`), la liste des images négatives (`-bg`).
 <br/>
@@ -356,8 +336,7 @@ opencv_traincascade -data data -vec positives.vec -bg negatives.txt -numPos 550 
 Entraîner un classifieur prend un certain temps : 33 minutes dans mon cas et dépend fortement du nombre d’itérations que vous avez spécifié. Pour chaque itération, un fichier stageXX.xml est créé. Cela permet de pouvoir arrêter l’apprentissage et reprendre de le reprendre à la dernière itération connue. Lorsque l’entraînement se termine un fichier cascade.xml est créé et on obtient cet affichage dans le terminal : 
 <br/>
 <br/>
-<p align=&quot;center&quot;img src=&quot;Entrainer_classifieur.png/>
-<img src="Entrainer_classifieur.png" width=500 align=left/>
+<p align="left"> <img src="Entrainer_classifieur.png" style="width:500px;"> </p>
 
 <br/>
 <br/>
@@ -398,14 +377,12 @@ cv2.destroyAllWindows()
 
 On utilise comme visage à détecter celui de Barack Obama avec l'image suivante :
 
-<p align=&quot;center&quot;img src=&quot;image.jpg/>
-<img src="image.jpg" width=400 align=left/>
+<p align="left"> <img src="image.jpg" style="width:400px;"> </p>
 <br/>
 On obtient le résultat suivant :
 <br/>
 
-<p align=&quot;center&quot;img src=&quot;visage_image.jpg/>
-<img src="visage_image.jpg" width=400 align=left/>
+<p align="left"> <img src="visage_image.jpg" style="width:400px;"> </p>
 <br/>
 Comme on peut le voir le classifier a réussi à détecter le visage mais il y a eu 4 autres détections parisites. L'identification du visage de Barack Obama est un échec. Il faut donc mieux apprendre à la machine comment détecter le visage de Barack Obame. Pour ce faire, nous n'allons pas utiliser une image de Barack Obama mais plusieurs images.
 
@@ -427,8 +404,7 @@ Maintenant qu'on a ces images, il faut créer un fichier contenant la liste des 
 find ./negatives/ -name '*.jpg' > negatives.txt
 ```
 
-<p align=&quot;center&quot;img src=&quot;images_obama.JPG/>
-<img src="images_obama.JPG" width=500 align=left/>
+<p align="left"> <img src="images_obama.JPG" style="width:500px;"> </p>
 <br/>
 Puis il faut aussi créer un fichier contenant la liste des images du visage à reconnaître avec la commande suivante : 
 ```bash
@@ -453,8 +429,7 @@ Nous devons donc fournir lors de l’appel de l’outil un certain nombre d’in
 L’appel du script createsamples.pl, nous permet de générer facilement les fichiers descripteurs pour chaque image positive initiale. L’ensemble de ces fichiers descripteurs ont été stockés dans le dossier samples.
 <br/>
 <br/>
-<p align=&quot;center&quot;img src=&quot;samples.JPG/>
-<img src="samples.JPG" width=500 align=left/>
+<p align="left"> <img src="samples.JPG" style="width:500px;"> </p>
 <br/>
 Nous devons maintenant ces fichiers dans un seul fichier descripteur afin de pouvoir entrainer le classifieur. Pour ce faire, nous allons appeler le programme `mergevec.py` qui permet de regrouper tous les fichiers descripteurs. Ce programme est disponible sur _GitHub_ (https://github.com/wulfebw/mergevec).
 <br/>
@@ -471,8 +446,7 @@ Maintenant que nous avons notre fichier descripteur, nous devons entraîner le c
 <br/>
 Mais avant cela, créons un dossier qui contiendra notre classifieur et les différents fichiers générés à chaque étape de l’entraînement. Il s'agit du dossier "data" 
 <br/>
-<p align=&quot;center&quot;img src=&quot;dossier_data.JPG/>
-<img src="dossier_data.JPG" width=500 align=left/>
+<p align="left"> <img src="dossier_data.JPG" style="width:500px;"> </p>
 
 Maintenant, comme avec l'entraînement du classifieur cascade avec une image du visage à détecter nous allons utliser l'éxécutable opencv_traincascade de la manière suivante afin d'entrainer le classifier : 
 ```bash
@@ -493,8 +467,7 @@ Une fois l'entraînement fini, il suffit d'utiliser le même script qui a permis
 Voici le résulat avec une photo de Barack Obama
 <br/>
 <br/>
-<p align=&quot;center&quot;img src=&quot;classifieur.JPG/>
-<img src="classifieur.JPG" width=500 align=left/>
+<p align="left"> <img src="classifieur.JPG" style="width:500px;"> </p>
 <br/>
 
 Comme on peut le voir le classifieur a réussi à détecter des visages. Néanmoins, il n'arrive pas à détecter le visage de Barack Obama en particulier.
@@ -519,21 +492,18 @@ Un fichier CSV est un fichier qui contient les chemins des images des visages à
 <br/>
 Tout d'abord, il nous faut des photos des visages à reconnaître.
 
-<p align=&quot;center&quot;img src=&quot;photos_csv.JPG/>
-<img src="photos_csv.JPG" width=500 align=left/>
+<p align="left"> <img src="photos_csv.JPG" style="width:500px;"> </p>
 <br/>
 Mais ces images n'ont pas toutes les mêmes dimensions ce qui pose problème au _recognizer_. Il faut donc les redimmensionner en les recentrant par rapport à la position des yeux. Pour ce faire, nous allons utiliser un script en Python disponible sur _GitHub_ (https://github.com/atrantan/projet-vision/blob/face_recognizer_/script/alignement.py). 
 <br/>
 <br/>
 Après redimmensionnement des images, on obtient ceci :
 
-<p align=&quot;center&quot;img src=&quot;visages_centrés.JPG/>
-<img src="visages_centrés.JPG" width=500 align=left/>
+<p align="left"> <img src="visages_centrés.JPG" style="width:500px;"> </p>
 <br/>
 Maintenant nous pouvons créer notre fichier CSV. Il doit réspecter une syntaxe particulière : il est composé du chemin de l'image suivi d'un point virgule puis d'un indice qui caractérise ce visage. On répète cette syntaxe pour toutes les images.
 
-<p align=&quot;center&quot;img src=&quot;csv.JPG/>
-<img src="csv.JPG" width=500 align=left/>
+<p align="left"> <img src="csv.JPG" style="width:500px;"> </p>
 
 Une fois le fichier CSV obtenu, nous pouvons tester le _recognizer_ dans l'étape qui va suivre.
 ## 6.2 Test du _recognizer_
@@ -549,8 +519,7 @@ Comme dit précèdemment cet exécutable prend 3 arguments. Le premier est le cl
 <br/>
 Une fois l'exécutable lancé, on obtient ceci : 
 <br/>
-<p align=&quot;center&quot;img src=&quot;recognizer.JPG/>
-<img src="recognizer.JPG" width=500 align=left/>
+<p align="left"> <img src="recognizer.JPG" style="width:500px;"> </p>
 <br/>
 On observe que cette fois-ci on arrive à détecter des visages mais on arrive aussi à reconnaître le visage détecté. Nous avons résolu le problème du classifieur cascade. Néanmoins, chaque visage détecté doit être affilié à un visage dans la base de données. 
 
